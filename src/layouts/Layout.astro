@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { SEO } from 'astro-seo';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -67,46 +68,50 @@ const siteName = "Sinteco BH - Especialista em Pisos de Madeira";
     }}
   />
 
-  <script type="application/ld+json" is:inline>
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Sinteco BH",
-      "image": "https://sintecombh.com.br/logo.png",
-      "@id": "https://sintecombh.com.br",
-      "url": "https://sintecombh.com.br",
-      "telephone": "+5531999999999",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Rua Exemplo, 123",
-        "addressLocality": "Belo Horizonte",
-        "addressRegion": "MG",
-        "postalCode": "30000-000",
-        "addressCountry": "BR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -19.9167,
-        "longitude": -43.9345
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "08:00",
-        "closes": "18:00"
-      },
-      "sameAs": [
-        "https://www.facebook.com/sintecobh",
-        "https://www.instagram.com/sintecobh"
-      ]
-    }
-  </script>
+  <script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Sinteco BH",
+    "image": "https://sintecomg.com.br/logo.png",
+    "@id": "https://sintecomg.com.br",
+    "url": "https://sintecomg.com.br",
+    "telephone": "+5531996867305",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Exemplo, 123",
+      "addressLocality": "Belo Horizonte",
+      "addressRegion": "MG",
+      "postalCode": "30000-000",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -19.9167,
+      "longitude": -43.9345
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://www.facebook.com/sintecobh",
+      "https://www.instagram.com/sintecobh"
+    ]
+  })}
+/>
+
+  <Analytics />
 </head>
 <body>
   <slot />

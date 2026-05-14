@@ -6,6 +6,12 @@ import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import { CheckCircle2, ArrowRight, User, Calendar, Clock, ChevronRight, Share2, Award, ShieldCheck, MapPin, Droplets, Hammer, Sun, Sparkles, Ruler } from 'lucide-astro';
 
+import imgSintecoBH from '../assets/Sinteco-em-BH.jpeg';
+import imgDeck from '../assets/Reforma-e-Manutenção-de-Deck.jpg';
+import imgRaspagem from '../assets/Raspagem-de-Piso-de-Madeira-em-BH.jpg';
+import imgInstalacao from '../assets/Instalação-de-Piso-de-Madeira-BH.jpeg';
+import imgBona from '../assets/Aplicação do sinteco.jpg';
+
 export async function getStaticPaths() {
 	const services = [
 		{
@@ -14,10 +20,10 @@ export async function getStaticPaths() {
 			headline: "Aplicação de Sinteco em Belo Horizonte (BH): Tudo o Que Você Precisará Saber",
 			description: "Melhor serviço de aplicação de sinteco em BH. Guia completo sobre preços, benefícios, restauração de tacos e parquets em Belo Horizonte.",
 			category: "Guia Completo",
-			author: "Wanderson Silva",
-			date: "13 de Maio, 2024",
+			author: "Roberto noronha",
+			date: "14 de Maio, 2026",
 			readTime: "8 min de leitura",
-			image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200",
+			image: imgSintecoBH.src,
 			isRichContent: true
 		},
 		{
@@ -29,7 +35,7 @@ export async function getStaticPaths() {
 			author: "Wanderson Silva",
 			date: "14 de Maio, 2024",
 			readTime: "7 min de leitura",
-			image: "https://images.unsplash.com/photo-1525909002129-1835b111596e?auto=format&fit=crop&q=80&w=1200",
+			image: imgDeck.src,
 			isRichContent: true
 		},
 		{
@@ -41,7 +47,7 @@ export async function getStaticPaths() {
 			author: "Wanderson Silva",
 			date: "15 de Maio, 2024",
 			readTime: "6 min de leitura",
-			image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=1200",
+			image: imgRaspagem.src,
 			isRichContent: true
 		},
 		{
@@ -53,7 +59,7 @@ export async function getStaticPaths() {
 			author: "Wanderson Silva",
 			date: "16 de Maio, 2024",
 			readTime: "7 min de leitura",
-			image: "https://images.unsplash.com/photo-1505691938895-1758d7eaa511?auto=format&fit=crop&q=80&w=1200",
+			image: imgInstalacao.src,
 			isRichContent: true
 		},
 		{
@@ -66,7 +72,7 @@ export async function getStaticPaths() {
 			author: "Wanderson Silva",
 			date: "10 de Maio, 2024",
 			readTime: "7 min de leitura",
-			image: "https://images.unsplash.com/photo-1581850518616-bcb81881443e?auto=format&fit=crop&q=80&w=1200"
+			image: imgBona.src
 		}
 	];
 
@@ -196,7 +202,7 @@ const formatDate = (date: Date) => {
 						<div class="relative z-10">
 							<h3 class="text-xl font-bold mb-3 leading-tight">Quer um piso impecável?</h3>
 							<p class="text-white/80 text-xs mb-6 leading-relaxed">Fale com quem entende de pisos em BH.</p>
-							<a href="https://wa.me/5531999999999" class="w-full py-4 bg-white text-primary rounded-xl font-bold text-sm flex items-center justify-center gap-2 group-hover:scale-[1.02] transition-transform">
+							<a href="https://api.whatsapp.com/send?phone=5531996867305&text=Oi%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20sem%20compromisso!" target="_blank" class="w-full py-4 bg-white text-primary rounded-xl font-bold text-sm flex items-center justify-center gap-2 group-hover:scale-[1.02] transition-transform">
 								WhatsApp Grátis
 								<ArrowRight class="w-4 h-4" />
 							</a>
@@ -226,7 +232,7 @@ const formatDate = (date: Date) => {
 								<h2 id="beneficios">Benefícios da Aplicação de Sinteco</h2>
 								<p>Dentre as principais vantagens estão a aparência renovada (devolve o brilho natural), a durabilidade (proteção contra riscos e manchas) e o excelente custo-benefício para quem deseja valorizar o imóvel.</p>
 								<h2 id="custo">Quanto Custa Aplicar Sinteco em BH?</h2>
-								<p>O preço varia conforme o estado do piso e o produto escolhido. Recomendamos consultar nossa tabela atualizada em <a href="/blog/preco-sinteco" class="text-primary font-bold">preços de sinteco em BH</a>.</p>
+								<p>O preço varia conforme o estado do piso e o produto escolhido. Recomendamos consultar nossa tabela atualizada em <a href="/blog/sinteco-preco" class="text-primary font-bold">preços de sinteco em BH</a>.</p>
 							</>
 						)}
 
@@ -255,7 +261,7 @@ const formatDate = (date: Date) => {
 									A raspagem de piso de madeira é uma etapa essencial na manutenção, garantindo sua longevidade e aparência impecável. 
 								</p>
 								<p class="mb-12">
-									Este artigo reúne tudo o que você precisa saber sobre o processo, desde os benefícios até custo e acabamento. Confira também nosso artigo completo sobre <a href="/blog/restauracao-de-piso-de-madeira" class="text-primary font-bold">restauração de pisos em BH</a> e o guia de <a href="/blog/preco-sinteco" class="text-primary font-bold">preços de sinteco</a>.
+									Este artigo reúne tudo o que você precisa saber sobre o processo, desde os benefícios até custo e acabamento. Confira também nosso artigo completo sobre <a href="/blog/restauracao-de-piso-de-madeira" class="text-primary font-bold">restauração de pisos em BH</a> e o guia de <a href="/blog/sinteco-preco" class="text-primary font-bold">preços de sinteco</a>.
 								</p>
 
 								<h2 id="o-que-e">1. O Que é a Raspagem de Piso de Madeira?</h2>
@@ -343,7 +349,7 @@ const formatDate = (date: Date) => {
 								<h2 class="text-3xl md:text-5xl font-bold text-white leading-tight tracking-tighter mt-0!">Pronto para renovar seu piso?</h2>
 								<p class="text-white/60 text-lg">Orçamentos rápidos e transparentes via WhatsApp. Atendemos toda BH e Região Metropolitana.</p>
 								<div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
-									<a href="https://wa.me/5531999999999" class="px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg shadow-xl shadow-primary/30 hover:bg-secondary transition-all">
+									<a href="https://api.whatsapp.com/send?phone=5531996867305&text=Oi%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20sem%20compromisso!" target="_blank" class="px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg shadow-xl shadow-primary/30 hover:bg-secondary transition-all">
 										Conversar no WhatsApp
 									</a>
 								</div>

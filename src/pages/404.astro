@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { Home, Search, ArrowRight, BookOpen, Sparkles, Hammer, Droplets, Layers } from 'lucide-astro';
+import imgFallback from '../assets/Sinteco-em-BH.jpeg';
 
 // Buscar posts recentes para sugestões
 const allPosts = await getCollection('blog');
@@ -140,7 +141,7 @@ const popularServices = [
             <a href={`/blog/${post.id}`} class="group card-premium flex flex-col">
               <div class="aspect-video overflow-hidden">
                 <img 
-                  src={post.data.heroImage || 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800'} 
+                  src={post.data.heroImage || imgFallback.src} 
                   alt={post.data.title}
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
@@ -176,7 +177,7 @@ const popularServices = [
               Fale diretamente com nossa equipe. Atendemos em toda Belo Horizonte e Região Metropolitana.
             </p>
             <a 
-              href="https://wa.me/5531999999999" 
+              href="https://api.whatsapp.com/send?phone=5531996867305&text=Oi%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20sem%20compromisso!" target="_blank" 
               class="inline-flex items-center gap-2 bg-white text-primary hover:bg-stone-100 px-8 py-4 rounded-xl font-bold text-lg transition-colors"
             >
               Falar no WhatsApp

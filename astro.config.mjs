@@ -7,8 +7,14 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://sintecobh.com.br', // Substitua pelo domínio real
+  site: 'https://sintecomg.com.br',
   
+  redirects: {
+    '/sinteco-preco': '/blog/sinteco-preco',
+    '/melhor-cera-para-piso': '/blog/melhor-cera-para-piso',
+    '/restauracao-de-piso-de-madeira': '/blog/restauracao-de-piso-de-madeira'
+  },
+
   vite: {
     plugins: [tailwindcss()]
   },

@@ -1,0 +1,297 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { Target, Award, Users, MapPin, CheckCircle2, ArrowRight, Star, Leaf, HeartHandshake, Clock, Wrench, ShieldCheck } from 'lucide-astro';
+import imgSobre from '../assets/Restauração-de-Pisos-de-Madeira.jpeg';
+import imgAplicacao from '../assets/Sinteco-em-BH.jpeg';
+
+const title = "Sobre Nós | Empresa de Sinteco e Raspagem de Pisos em BH";
+const description = "Conheça nossa empresa especializada em sinteco e raspagem de pisos de madeira em Belo Horizonte. Missão, valores, serviços e nossa equipe qualificada.";
+
+const valores = [
+	{ icon: Award,         title: "Qualidade",             text: "Utilizamos produtos e equipamentos de alto padrão para garantir um serviço de primeira linha." },
+	{ icon: HeartHandshake, title: "Compromisso",          text: "Respeitamos prazos e garantimos um atendimento personalizado e transparente." },
+	{ icon: Star,           title: "Excelência",           text: "Nossa equipe está sempre atualizada com as melhores técnicas para oferecer um resultado impecável." },
+	{ icon: Leaf,           title: "Sustentabilidade",     text: "Trabalhamos com produtos ecologicamente corretos, contribuindo para um meio ambiente mais limpo." },
+	{ icon: Users,          title: "Satisfação do Cliente",text: "Buscamos superar expectativas e entregar um serviço que agregue valor ao seu imóvel." },
+];
+
+const servicos = [
+	"Sinteco em pisos de madeira",
+	"Raspagem de piso de madeira",
+	"Aplicação de sinteco (sinteco, sinteko e synteko)",
+	"Revitalização de sinteco em BH",
+	"Raspagem de piso de madeira e aplicação de Bona",
+	"Preço de sinteco por metro quadrado em BH",
+	"Reforma de deck de madeira",
+	"Manutenção de deck de madeira",
+	"Serviços completos de raspagem e aplicação de sinteco",
+];
+
+const diferenciais = [
+	{ title: "Experiência Comprovada",       text: "Atuamos há anos no segmento de sinteco e restauração de pisos, garantindo serviços de alta qualidade." },
+	{ title: "Equipe Especializada",         text: "Contamos com profissionais capacitados para realizar todos os processos com precisão e segurança." },
+	{ title: "Produtos de Alta Qualidade",   text: "Trabalhamos com marcas reconhecidas como Rebrilhar Classic Brilhante, Bona Traffic e vernizes base água." },
+	{ title: "Orçamento Justo e Transparente", text: "Oferecemos um excelente custo-benefício e fornecemos um orçamento detalhado, sem surpresas." },
+	{ title: "Garantia e Satisfação",        text: "Nosso compromisso é entregar um trabalho impecável e satisfazer plenamente nossos clientes." },
+];
+
+const processo = [
+	{ numero: "01", title: "Avaliação do Piso",           text: "Inspeção detalhada para verificar as condições do piso e determinar o melhor tratamento." },
+	{ numero: "02", title: "Raspagem e Nivelamento",      text: "Remoção de camadas antigas, nivelamento e preparação da madeira." },
+	{ numero: "03", title: "Calafetação (Massa Acrílica)", text: "Preenchimento de frestas e espaços para um acabamento uniforme." },
+	{ numero: "04", title: "Aplicação de Sinteco ou Bona", text: "Uso de materiais de alta performance para um acabamento duradouro." },
+	{ numero: "05", title: "Secagem e Acabamento",        text: "Processo final de cura para garantir a resistência e brilho ideal do piso." },
+];
+
+const cidades = [
+	"Contagem", "Betim", "Nova Lima", "Ribeirão das Neves",
+	"Sabará", "Santa Luzia", "Vespasiano",
+	"Toda a Região Metropolitana de BH"
+];
+---
+
+<Layout title={title} description={description}>
+	<Navbar />
+	<main class="pt-32 bg-white">
+
+		<!-- ═══════════════════════════════════════════
+		     H1 · Hero Section — Quem Somos
+		     ═══════════════════════════════════════════ -->
+		<section class="section-padding pb-0">
+			<div class="grid lg:grid-cols-2 gap-16 items-center">
+				<div class="space-y-8">
+					<p class="text-primary font-bold uppercase tracking-[0.2em] text-sm">Empresa de Serviços de Pisos de Madeira</p>
+					<h1 class="text-5xl lg:text-6xl font-bold text-text-main leading-tight tracking-tighter">
+						Quem <span class="text-primary italic">Somos</span>
+					</h1>
+					<div class="space-y-4 text-lg text-text-muted leading-relaxed">
+						<p>
+							Somos uma empresa especializada em <strong class="text-text-main">sinteco e raspagem de pisos de madeira</strong> em Belo Horizonte (BH) e região metropolitana.
+						</p>
+						<p>
+							Com anos de experiência no mercado, oferecemos serviços de alta qualidade para revitalização e manutenção de pisos, garantindo um acabamento impecável e duradouro.
+						</p>
+						<p>
+							Trabalhamos com métodos modernos, produtos de alto padrão e uma equipe altamente qualificada para atender às necessidades de nossos clientes.
+						</p>
+					</div>
+					<div class="flex gap-4">
+						<div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 flex-1 text-center">
+							<p class="text-3xl font-bold text-primary mb-1">10+</p>
+							<p class="text-xs font-bold text-text-muted uppercase tracking-widest">Anos de História</p>
+						</div>
+						<div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 flex-1 text-center">
+							<p class="text-3xl font-bold text-primary mb-1">500+</p>
+							<p class="text-xs font-bold text-text-muted uppercase tracking-widest">Obras Entregues</p>
+						</div>
+						<div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 flex-1 text-center">
+							<p class="text-3xl font-bold text-primary mb-1">100%</p>
+							<p class="text-xs font-bold text-text-muted uppercase tracking-widest">Satisfação</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="relative">
+					<div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+						<img
+							src={imgSobre.src}
+							alt="Equipe Sinteco BH trabalhando na restauração de piso de madeira"
+							class="w-full h-full object-cover"
+						/>
+					</div>
+					<div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-stone-100 flex items-center gap-4">
+						<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+							<ShieldCheck class="w-7 h-7" />
+						</div>
+						<div>
+							<p class="text-xs font-bold text-text-muted uppercase tracking-wider leading-none">Serviço com</p>
+							<p class="text-lg font-bold text-text-main leading-tight">Garantia Total</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════════════════════════════════════
+		     H2 · Nossa Missão
+		     ═══════════════════════════════════════════ -->
+		<section class="section-padding">
+			<div class="max-w-4xl mx-auto">
+				<div class="bg-primary rounded-[2.5rem] p-10 md:p-16 text-white relative overflow-hidden">
+					<div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent)]"></div>
+					<div class="relative z-10 space-y-6">
+						<div class="flex items-center gap-3">
+							<Target class="w-8 h-8 text-white/70" />
+							<h2 class="text-2xl font-bold uppercase tracking-widest">Nossa Missão</h2>
+						</div>
+						<p class="text-xl md:text-2xl leading-relaxed text-white/90 font-medium">
+							Proporcionar soluções de revitalização de pisos de madeira com excelência, garantindo beleza, durabilidade e satisfação aos nossos clientes.
+						</p>
+						<p class="text-white/70 leading-relaxed">
+							Buscamos transformar ambientes através de um trabalho minucioso, utilizando as melhores técnicas e materiais do mercado.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════════════════════════════════════
+		     H2 · Nossos Valores
+		     ═══════════════════════════════════════════ -->
+		<section class="section-padding bg-stone-50">
+			<div class="text-center mb-14 space-y-3">
+				<p class="text-primary font-bold uppercase tracking-[0.2em] text-sm">O que nos guia</p>
+				<h2 class="text-4xl md:text-5xl font-bold text-text-main tracking-tight">Nossos Valores</h2>
+				<div class="w-20 h-1 bg-primary mx-auto"></div>
+			</div>
+			<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+				{valores.map(item => (
+					<div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 space-y-4 group hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+						<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+							<item.icon class="w-6 h-6" />
+						</div>
+						<h3 class="text-lg font-bold text-text-main">{item.title}</h3>
+						<p class="text-text-muted text-sm leading-relaxed">{item.text}</p>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- ═══════════════════════════════════════════
+		     H2 · Nossos Serviços
+		     ═══════════════════════════════════════════ -->
+		<section class="section-padding">
+			<div class="grid lg:grid-cols-2 gap-16 items-center">
+				<div class="space-y-8">
+					<div class="space-y-3">
+						<p class="text-primary font-bold uppercase tracking-[0.2em] text-sm">O que oferecemos</p>
+						<h2 class="text-4xl md:text-5xl font-bold text-text-main tracking-tight leading-tight">Nossos Serviços</h2>
+						<p class="text-lg text-text-muted leading-relaxed">
+							Atendemos clientes que desejam renovar e proteger seus pisos de madeira, oferecendo soluções especializadas:
+						</p>
+					</div>
+					<ul class="space-y-3">
+						{servicos.map(servico => (
+							<li class="flex items-start gap-3">
+								<CheckCircle2 class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+								<span class="text-text-muted font-medium">{servico}</span>
+							</li>
+						))}
+					</ul>
+					<a href="/#servicos" class="btn-primary inline-flex gap-2 px-8 py-4">
+						Ver Todos os Serviços
+						<ArrowRight class="w-5 h-5" />
+					</a>
+				</div>
+				<div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+					<img
+						src={imgAplicacao.src}
+						alt="Aplicação de sinteco em piso de madeira em BH"
+						class="w-full h-full object-cover"
+					/>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════════════════════════════════════
+		     H2 · Por Que Nos Escolher
+		     ═══════════════════════════════════════════ -->
+		<section class="section-padding bg-stone-50">
+			<div class="text-center mb-14 space-y-3">
+				<p class="text-primary font-bold uppercase tracking-[0.2em] text-sm">Nossos diferenciais</p>
+				<h2 class="text-4xl md:text-5xl font-bold text-text-main tracking-tight">Por Que Escolher Nossa Empresa?</h2>
+				<div class="w-20 h-1 bg-primary mx-auto"></div>
+			</div>
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+				{diferenciais.map((item, i) => (
+					<div class={`bg-white p-8 rounded-3xl border border-stone-100 shadow-sm space-y-3 hover:shadow-md hover:-translate-y-1 transition-all duration-300 ${i === 4 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
+						<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">
+							{(i + 1).toString().padStart(2, '0')}
+						</div>
+						<h3 class="text-xl font-bold text-text-main">{item.title}</h3>
+						<p class="text-text-muted text-sm leading-relaxed">{item.text}</p>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- ═══════════════════════════════════════════
+		     H2 · Como Funciona Nosso Processo
+		     ═══════════════════════════════════════════ -->
+		<section class="section-padding">
+			<div class="text-center mb-14 space-y-3">
+				<p class="text-primary font-bold uppercase tracking-[0.2em] text-sm">Passo a passo</p>
+				<h2 class="text-4xl md:text-5xl font-bold text-text-main tracking-tight">Como Funciona Nosso Processo?</h2>
+				<div class="w-20 h-1 bg-primary mx-auto"></div>
+			</div>
+			<div class="max-w-3xl mx-auto space-y-4">
+				{processo.map((etapa, i) => (
+					<div class="flex gap-6 items-start p-6 bg-stone-50 rounded-2xl border border-stone-100 hover:border-primary/20 hover:bg-white hover:shadow-md transition-all duration-300 group">
+						<div class="w-14 h-14 shrink-0 rounded-2xl bg-primary text-white flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">
+							{etapa.numero}
+						</div>
+						<div>
+							<h3 class="text-lg font-bold text-text-main mb-1">{etapa.title}</h3>
+							<p class="text-text-muted text-sm leading-relaxed">{etapa.text}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- ═══════════════════════════════════════════
+		     H2 · Onde Atendemos
+		     ═══════════════════════════════════════════ -->
+		<section class="section-padding bg-stone-50">
+			<div class="max-w-4xl mx-auto text-center space-y-10">
+				<div class="space-y-3">
+					<p class="text-primary font-bold uppercase tracking-[0.2em] text-sm">Cobertura de atendimento</p>
+					<h2 class="text-4xl md:text-5xl font-bold text-text-main tracking-tight">Onde Atendemos?</h2>
+					<div class="w-20 h-1 bg-primary mx-auto"></div>
+					<p class="text-lg text-text-muted leading-relaxed max-w-2xl mx-auto pt-2">
+						Atendemos toda <strong class="text-text-main">Belo Horizonte</strong> e região metropolitana, incluindo:
+					</p>
+				</div>
+				<div class="flex flex-wrap justify-center gap-3">
+					{cidades.map(cidade => (
+						<span class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-stone-200 rounded-full text-sm font-bold text-text-muted shadow-sm hover:border-primary hover:text-primary transition-colors">
+							<MapPin class="w-3.5 h-3.5" />
+							{cidade}
+						</span>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════════════════════════════════════
+		     CTA Final
+		     ═══════════════════════════════════════════ -->
+		<section class="section-padding">
+			<div class="max-w-4xl mx-auto">
+				<div class="bg-stone-900 rounded-[2.5rem] p-10 md:p-16 text-center text-white relative overflow-hidden">
+					<div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(120,53,15,0.3),transparent)]"></div>
+					<div class="relative z-10 space-y-6">
+						<h2 class="text-3xl md:text-5xl font-bold tracking-tighter leading-tight">
+							Pronto para renovar<br/>seu piso de madeira?
+						</h2>
+						<p class="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
+							Se você busca uma empresa confiável e experiente em sinteco e raspagem de pisos em Belo Horizonte, estamos prontos para atendê-lo.
+						</p>
+						<a href="https://api.whatsapp.com/send?phone=5531996867305&text=Oi%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20sem%20compromisso!" target="_blank" class="inline-flex items-center gap-3 bg-primary hover:bg-secondary text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all shadow-xl shadow-primary/30">
+							Solicitar Orçamento Grátis
+							<ArrowRight class="w-5 h-5" />
+						</a>
+						<p class="text-white/40 text-sm">Entre em contato e solicite um orçamento sem compromisso!</p>
+					</div>
+					<div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+	<Footer />
+	<WhatsAppButton />
+</Layout>

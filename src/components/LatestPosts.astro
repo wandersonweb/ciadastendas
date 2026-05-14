@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { ArrowRightCircle } from 'lucide-astro';
+import imgFallback from '../assets/Sinteco-em-BH.jpeg';
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
@@ -21,7 +22,7 @@ const posts = allPosts
       <article class="flex flex-col group">
         <a href={`/blog/${post.id}`} class="block relative aspect-[4/3] overflow-hidden rounded-sm">
           <img 
-            src={post.data.heroImage || 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200'} 
+            src={post.data.heroImage || imgFallback.src} 
             alt={post.data.title}
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           />
