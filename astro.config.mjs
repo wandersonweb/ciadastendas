@@ -7,10 +7,12 @@ import mdx from '@astrojs/mdx';
 
 import partytown from '@astrojs/partytown';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ciadastendas.com.br',
-  
+
   vite: {
     plugins: [tailwindcss()]
   },
@@ -21,8 +23,11 @@ export default defineConfig({
 
   // Performance e Otimização
   compressHTML: true,
+
   build: {
     format: 'file',
     inlineStylesheets: 'always',
-  }
+  },
+
+  adapter: cloudflare()
 });
