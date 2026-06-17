@@ -1,0 +1,18 @@
+---
+import SiloPage from '../components/SiloPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { buildCidadeTendaPage, cidadesTendas } from '../data/cidadesTendas';
+
+export function getStaticPaths() {
+  return cidadesTendas.map((item) => ({
+    params: { slug: item.slug },
+    props: { page: buildCidadeTendaPage(item) },
+  }));
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title={page.seoTitle} description={page.seoDescription}>
+  <SiloPage {...page} />
+</BaseLayout>

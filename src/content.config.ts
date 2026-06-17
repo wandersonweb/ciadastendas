@@ -9,8 +9,8 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
-    category: z.string().default('Pisos de Madeira'),
-    author: z.string().default('Especialista Sinteco BH'),
+    category: z.string().default('Categoria'),
+    author: z.string().default('{{NOME_EMPRESA}}'),
     readTime: z.string().optional(),
   }),
 });

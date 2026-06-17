@@ -1,69 +1,54 @@
 ---
-import { Menu, X, Phone } from 'lucide-astro';
-
-const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Sobre', href: '/sobre-nos' },
-  { name: 'Serviços', href: '/#servicos' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Contato', href: '/contato' },
-];
+import { Menu, X } from 'lucide-astro';
+import { getWhatsappUrl, navItems, site } from '../data/site';
 ---
 
-<header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-100">
-  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2 group">
-      <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:rotate-12 transition-transform">
-        S
-      </div>
-      <div class="flex flex-col">
-        <span class="text-xl font-bold text-primary leading-tight">SINTECO BH</span>
-        <span class="text-[10px] text-text-muted tracking-[0.2em] uppercase font-medium">Excelência em Pisos</span>
-      </div>
+<header class="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
+  <nav class="mx-auto flex max-w-7xl min-w-0 items-center justify-between gap-3 rounded-full border border-white/25 bg-white/85 px-4 py-3 shadow-lg shadow-emerald-950/10 backdrop-blur-xl">
+    <a href="/" class="flex min-w-0 items-center gap-3" aria-label={`${site.name} - início`}>
+      <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary font-display text-sm font-black text-white">CT</span>
+      <span class="max-w-[190px] truncate font-display text-base font-extrabold text-primary sm:max-w-none sm:text-lg">{site.name}</span>
     </a>
 
-    <!-- Desktop Nav -->
-    <nav class="hidden md:flex items-center gap-8">
-      {navItems.map(item => (
-        <a href={item.href} class="text-sm font-medium text-text-muted hover:text-primary transition-colors">
-          {item.name}
-        </a>
+    <div class="hidden items-center gap-7 lg:flex">
+      {navItems.map((item) => (
+        <a class="text-sm font-bold text-text-main transition hover:text-primary focus:outline-none focus:ring-2 focus:ring-accent/50" href={item.href}>{item.name}</a>
       ))}
-      <a href="https://api.whatsapp.com/send?phone=5531996867305&text=Oi%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20sem%20compromisso!" target="_blank" class="btn-primary py-2 px-5 text-sm">
-        Solicitar Orçamento
-      </a>
-    </nav>
+    </div>
 
-    <!-- Mobile Menu Button -->
-    <button id="mobile-menu-btn" class="md:hidden p-2 text-text-main" aria-label="Abrir menu">
-      <Menu class="w-6 h-6" id="menu-icon" />
-      <X class="w-6 h-6 hidden" id="close-icon" />
-    </button>
-  </div>
-
-  <!-- Mobile Nav -->
-  <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white border-b border-stone-100 py-6 px-6 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4">
-    {navItems.map(item => (
-      <a href={item.href} class="text-lg font-medium text-text-main py-2 border-b border-stone-50 last:border-0">
-        {item.name}
+    <div class="flex shrink-0 items-center gap-2">
+      <a class="hidden rounded-full bg-accent px-5 py-2.5 text-sm font-black text-dark transition hover:bg-amber-400 focus:outline-none focus:ring-4 focus:ring-accent/30 sm:inline-flex" href={getWhatsappUrl()} target="_blank" rel="noopener noreferrer">
+        Orçamento Rápido
       </a>
-    ))}
-    <a href="https://api.whatsapp.com/send?phone=5531996867305&text=Oi%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20sem%20compromisso!" target="_blank" class="btn-primary mt-4 py-4 flex gap-2">
-      <Phone class="w-5 h-5" />
-      Solicitar Orçamento
-    </a>
+      <button id="menu-toggle" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white lg:hidden" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <Menu class="menu-open h-5 w-5" aria-hidden="true" />
+        <X class="menu-close hidden h-5 w-5" aria-hidden="true" />
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="mx-auto mt-2 hidden max-w-7xl rounded-3xl border border-white/30 bg-white/95 p-4 shadow-xl backdrop-blur-xl lg:hidden">
+    <div class="grid gap-1">
+      {navItems.map((item) => (
+        <a class="rounded-2xl px-4 py-3 text-sm font-bold text-text-main hover:bg-background" href={item.href}>{item.name}</a>
+      ))}
+      <a class="btn-primary mt-2 w-full" href={getWhatsappUrl()} target="_blank" rel="noopener noreferrer">Orçamento Rápido</a>
+    </div>
   </div>
 </header>
 
-<script>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
+<script is:inline>
+  const toggle = document.querySelector('#menu-toggle');
+  const menu = document.querySelector('#mobile-menu');
+  const openIcon = document.querySelector('.menu-open');
+  const closeIcon = document.querySelector('.menu-close');
 
-  btn?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
-    menuIcon?.classList.toggle('hidden');
-    closeIcon?.classList.toggle('hidden');
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', isOpen);
+    openIcon?.classList.toggle('hidden', !isOpen);
+    closeIcon?.classList.toggle('hidden', isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu');
   });
 </script>

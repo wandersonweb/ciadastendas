@@ -9,14 +9,8 @@ import partytown from '@astrojs/partytown';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://sintecomg.com.br',
+  site: 'https://ciadastendas.com.br',
   
-  redirects: {
-    '/sinteco-preco': '/blog/sinteco-preco',
-    '/melhor-cera-para-piso': '/blog/melhor-cera-para-piso',
-    '/restauracao-de-piso-de-madeira': '/blog/restauracao-de-piso-de-madeira'
-  },
-
   vite: {
     plugins: [tailwindcss()]
   },

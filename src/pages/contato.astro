@@ -1,114 +1,35 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import WhatsAppButton from '../components/WhatsAppButton.astro';
-import { Phone, Mail, MapPin, Instagram, Facebook, Send } from 'lucide-astro';
-
-const title = "Contato | Sinteco BH - Orçamento Gratuito";
-const description = "Entre em contato com a Sinteco BH para solicitar um orçamento gratuito de raspagem de taco, sinteco ou restauração de piso em Belo Horizonte.";
+import { Mail, MapPin, MessageCircle } from 'lucide-astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getWhatsappUrl, site } from '../data/site';
 ---
 
-<Layout title={title} description={description}>
-	<Navbar />
-	<main class="pt-32 pb-20">
-		<section class="max-w-7xl mx-auto px-6">
-			<div class="grid lg:grid-cols-2 gap-16">
-				<!-- Contact Info -->
-				<div class="space-y-12">
-					<div class="space-y-6">
-						<h1 class="text-5xl font-bold text-text-main">Vamos renovar seu piso?</h1>
-						<p class="text-xl text-text-muted leading-relaxed">
-							Estamos prontos para tirar suas dúvidas e agendar uma visita técnica gratuita em qualquer região de Belo Horizonte.
-						</p>
-					</div>
+<BaseLayout title="Contato para Aluguel de Tendas" description="Entre em contato com a Companhia Tenda para solicitar orçamento de aluguel de tendas para eventos, empresas, casamentos e operações temporárias.">
+  <main class="section-padding pt-36">
+    <div class="max-w-3xl">
+      <p class="section-eyebrow">Contato</p>
+      <h1 class="mt-4 text-4xl text-primary sm:text-5xl lg:text-6xl">Solicite seu orçamento</h1>
+      <p class="mt-6 text-lg leading-8 text-text-muted">
+        Informe cidade, data, tipo de evento, metragem aproximada e local de montagem. Com esses dados, nossa equipe consegue orientar a solução mais adequada.
+      </p>
+    </div>
 
-					<div class="space-y-8">
-						<div class="flex gap-6 items-start">
-							<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center text-primary shrink-0">
-								<Phone class="w-6 h-6" />
-							</div>
-							<div>
-								<p class="text-xs font-bold text-text-muted uppercase tracking-widest mb-1">Telefone / WhatsApp</p>
-								<p class="text-xl font-bold text-text-main">(31) 99686-7305</p>
-							</div>
-						</div>
-
-						<div class="flex gap-6 items-start">
-							<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center text-primary shrink-0">
-								<Mail class="w-6 h-6" />
-							</div>
-							<div>
-								<p class="text-xs font-bold text-text-muted uppercase tracking-widest mb-1">E-mail</p>
-								<p class="text-xl font-bold text-text-main">sintecomg3@gmail.com</p>
-							</div>
-						</div>
-
-						<div class="flex gap-6 items-start">
-							<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center text-primary shrink-0">
-								<MapPin class="w-6 h-6" />
-							</div>
-							<div>
-								<p class="text-xs font-bold text-text-muted uppercase tracking-widest mb-1">Atendimento</p>
-								<p class="text-xl font-bold text-text-main">Toda Belo Horizonte e Grande BH</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="pt-8 border-t border-stone-100 flex gap-4">
-						<a href="#" class="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center text-stone-600 hover:bg-primary hover:text-white transition-all">
-							<Instagram class="w-5 h-5" />
-						</a>
-						<a href="#" class="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center text-stone-600 hover:bg-primary hover:text-white transition-all">
-							<Facebook class="w-5 h-5" />
-						</a>
-					</div>
-				</div>
-
-				<!-- Contact Form -->
-				<div class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-stone-100 relative">
-					<form class="space-y-6">
-						<div class="grid md:grid-cols-2 gap-6">
-							<div class="space-y-2">
-								<label class="text-xs font-bold text-text-muted uppercase tracking-widest">Nome Completo</label>
-								<input type="text" placeholder="Seu nome" class="w-full bg-stone-50 border-stone-100 rounded-xl p-4 focus:ring-2 focus:ring-primary/20 transition-all outline-none" required />
-							</div>
-							<div class="space-y-2">
-								<label class="text-xs font-bold text-text-muted uppercase tracking-widest">WhatsApp</label>
-								<input type="tel" placeholder="(31) 99999-9999" class="w-full bg-stone-50 border-stone-100 rounded-xl p-4 focus:ring-2 focus:ring-primary/20 transition-all outline-none" required />
-							</div>
-						</div>
-						
-						<div class="space-y-2">
-							<label class="text-xs font-bold text-text-muted uppercase tracking-widest">Serviço Desejado</label>
-							<select class="w-full bg-stone-50 border-stone-100 rounded-xl p-4 focus:ring-2 focus:ring-primary/20 transition-all outline-none appearance-none">
-								<option>Sinteco / Synteko</option>
-								<option>Aplicação de Bona</option>
-								<option>Raspagem de Taco</option>
-								<option>Calafetação</option>
-								<option>Restauração Completa</option>
-								<option>Outros</option>
-							</select>
-						</div>
-
-						<div class="space-y-2">
-							<label class="text-xs font-bold text-text-muted uppercase tracking-widest">Mensagem</label>
-							<textarea rows="4" placeholder="Conte-nos um pouco sobre seu projeto..." class="w-full bg-stone-50 border-stone-100 rounded-xl p-4 focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none"></textarea>
-						</div>
-
-						<button type="submit" class="btn-primary w-full py-5 text-lg gap-3">
-							Enviar Solicitação
-							<Send class="w-5 h-5" />
-						</button>
-						
-						<p class="text-[10px] text-center text-text-muted uppercase tracking-widest">
-							Retornamos em até 2 horas em horário comercial
-						</p>
-					</form>
-				</div>
-			</div>
-		</section>
-	</main>
-	<Footer />
-	<WhatsAppButton />
-</Layout>
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      <a class="card-premium p-6" href={getWhatsappUrl()} target="_blank" rel="noopener noreferrer">
+        <MessageCircle class="h-8 w-8 text-accent" aria-hidden="true" />
+        <h2 class="mt-4 text-xl text-primary">WhatsApp</h2>
+        <p class="mt-2 text-text-muted">{site.phone}</p>
+      </a>
+      <a class="card-premium p-6" href={`mailto:${site.email}`}>
+        <Mail class="h-8 w-8 text-accent" aria-hidden="true" />
+        <h2 class="mt-4 text-xl text-primary">E-mail</h2>
+        <p class="mt-2 text-text-muted">{site.email}</p>
+      </a>
+      <article class="card-premium p-6">
+        <MapPin class="h-8 w-8 text-accent" aria-hidden="true" />
+        <h2 class="mt-4 text-xl text-primary">Endereço</h2>
+        <p class="mt-2 text-text-muted">{site.address}</p>
+      </article>
+    </div>
+  </main>
+</BaseLayout>

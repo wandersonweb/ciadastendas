@@ -1,0 +1,38 @@
+---
+import { ArrowRight, CheckCircle2 } from 'lucide-astro';
+---
+
+<section class="bg-white">
+  <div class="section-padding grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+    <div class="relative">
+      <img
+        class="aspect-[4/3] w-full rounded-2xl object-cover shadow-xl"
+        src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1400&q=80"
+        alt="Estrutura de tenda preparada para evento corporativo"
+        loading="lazy"
+      />
+      <div class="absolute left-4 top-4 rounded-2xl bg-accent px-4 py-3 text-sm font-black text-dark shadow-lg">
+        Montagem técnica e logística
+      </div>
+    </div>
+    <div>
+      <p class="section-eyebrow">Sobre a Companhia</p>
+      <h2 class="mt-3 text-4xl text-primary sm:text-5xl">Estruturas pensadas para segurança, acabamento e prazo.</h2>
+      <p class="mt-5 text-lg leading-8 text-text-muted">
+        A Companhia Tenda atua na locação de tendas para eventos, empresas e operações temporárias com atenção ao planejamento da montagem, logística e acabamento. Nossa equipe orienta a escolha do modelo adequado, avalia as condições do local e trabalha para entregar uma estrutura compatível com a necessidade de cada projeto.
+      </p>
+      <div class="mt-7 grid gap-3 sm:grid-cols-2">
+        {['Equipe preparada', 'Logística organizada', 'Atenção às normas de segurança', 'Compromisso com prazos'].map((item) => (
+          <p class="flex items-center gap-3 text-sm font-bold text-text-main">
+            <CheckCircle2 class="h-5 w-5 text-accent" aria-hidden="true" />
+            {item}
+          </p>
+        ))}
+      </div>
+      <a class="mt-8 inline-flex items-center gap-2 font-black text-primary transition hover:text-accent" href="/sobre">
+        Leia Mais Sobre a Companhia Tenda
+        <ArrowRight class="h-5 w-5" aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</section>

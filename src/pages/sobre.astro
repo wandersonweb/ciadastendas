@@ -1,0 +1,266 @@
+---
+import { ArrowRight, CheckCircle2, Clock3, ShieldCheck, Tent, Wrench } from 'lucide-astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getWhatsappUrl } from '../data/site';
+
+const valores = [
+  {
+    icon: ShieldCheck,
+    title: 'Segurança em Primeiro Lugar',
+    text: 'Avaliamos o espaço, as condições do local, o tipo de piso, a necessidade de fixação e o uso correto da estrutura para reduzir riscos e entregar uma cobertura adequada para cada situação.',
+  },
+  {
+    icon: CheckCircle2,
+    title: 'Atendimento Claro e Transparente',
+    text: 'Orientamos sobre modelos, tamanhos, limitações do local, prazos, montagem, desmontagem e cuidados necessários com a estrutura.',
+  },
+  {
+    icon: Clock3,
+    title: 'Pontualidade e Compromisso',
+    text: 'Evento tem data e horário para acontecer. Por isso, trabalhamos com planejamento para que a estrutura esteja pronta conforme o combinado.',
+  },
+  {
+    icon: Wrench,
+    title: 'Cuidado com o Local',
+    text: 'Sempre que possível, utilizamos métodos de instalação que ajudam a preservar pisos, gramados, áreas externas e espaços já preparados para o evento.',
+  },
+];
+
+const analiseInicial = [
+  'Tipo de evento ou uso da estrutura',
+  'Quantidade aproximada de pessoas',
+  'Espaço disponível para montagem',
+  'Tipo de piso',
+  'Local de instalação',
+  'Necessidade de cobertura contra sol ou chuva',
+  'Prazo para montagem e desmontagem',
+];
+
+const demandas = [
+  'Festas de aniversário',
+  'Casamentos',
+  'Eventos corporativos',
+  'Feiras e exposições',
+  'Ações promocionais',
+  'Eventos religiosos',
+  'Eventos em escolas',
+  'Confraternizações',
+  'Cobertura de áreas comerciais',
+  'Instalação e manutenção de toldos',
+  'Estruturas temporárias para empresas',
+];
+---
+
+<BaseLayout
+  title="Sobre a Companhia Tenda"
+  description="Conheça a Companhia Tenda, com experiência em aluguel de tendas, instalação de toldos, coberturas temporárias e estruturas para eventos."
+>
+  <main class="pb-20">
+    <section class="section-padding pt-36">
+      <div class="overflow-hidden rounded-[32px] border border-emerald-950/10 bg-white shadow-[0_28px_80px_-40px_rgba(16,63,42,0.45)]">
+        <div class="grid gap-10 px-6 py-10 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-12 lg:py-14">
+          <div>
+            <p class="section-eyebrow">Quem Somos</p>
+            <h1 class="mt-4 text-4xl leading-tight text-primary sm:text-5xl lg:text-6xl">
+              Seguranca e experiencia em tendas e toldos
+            </h1>
+            <p class="mt-6 text-lg leading-8 text-text-muted">
+              A Companhia Tenda atua no mercado de aluguel de tendas, instalacao de toldos, coberturas temporarias e estruturas para eventos, oferecendo solucoes para festas, empresas, feiras, casamentos, acoes promocionais e necessidades comerciais.
+            </p>
+            <p class="mt-5 text-lg leading-8 text-text-muted">
+              Nosso trabalho vai alem de montar uma estrutura. Cada projeto exige analise do local, escolha correta do tamanho da tenda, atencao a fixacao, seguranca da montagem e cuidado com o acabamento.
+            </p>
+            <p class="mt-5 text-lg leading-8 text-text-muted">
+              Por isso, tratamos cada atendimento com responsabilidade tecnica, pontualidade e compromisso com o cliente.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a class="btn-primary" href={getWhatsappUrl()} target="_blank" rel="noopener noreferrer">
+                Solicitar orcamento pelo WhatsApp
+              </a>
+              <a class="inline-flex min-h-11 items-center rounded-full border border-primary/15 bg-background px-5 py-3 text-sm font-bold text-primary transition hover:border-primary/35 hover:bg-primary/5" href="#como-trabalhamos">
+                Como trabalhamos
+              </a>
+            </div>
+          </div>
+
+          <div class="grid gap-4 self-start">
+            <div class="rounded-[28px] border border-emerald-950/10 bg-background/75 p-6">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white">
+                <Tent class="h-5 w-5" aria-hidden="true" />
+              </div>
+              <h2 class="mt-4 text-2xl text-primary">Experiencia pratica no mercado</h2>
+              <p class="mt-3 text-sm leading-7 text-text-muted">
+                A operacao conta com a experiencia de Cleidsom Ferreira, tecnico em manutencao e instalacao de tendas e toldos em geral, com mais de 8 anos de atuacao no segmento.
+              </p>
+            </div>
+
+            <div class="rounded-[28px] border border-emerald-950/10 bg-background/75 p-6">
+              <div class="grid gap-3 sm:grid-cols-2">
+                {['Eventos sociais', 'Espacos comerciais', 'Areas abertas', 'Estruturas temporarias'].map((item) => (
+                  <p class="flex items-center gap-3 text-sm font-bold text-text-main">
+                    <CheckCircle2 class="h-5 w-5 text-accent" aria-hidden="true" />
+                    {item}
+                  </p>
+                ))}
+              </div>
+              <p class="mt-4 text-sm leading-7 text-text-muted">
+                Essa vivencia pratica ajuda nossa equipe a orientar melhor cada cliente, indicando solucoes mais adequadas conforme o espaco, o tipo de evento e a necessidade de cobertura.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="grid gap-6 lg:grid-cols-2">
+        <article class="rounded-[28px] border border-emerald-950/10 bg-white p-6 shadow-sm sm:p-8">
+          <p class="section-eyebrow">Nossa Missao</p>
+          <h2 class="mt-3 text-3xl text-primary">Estruturas seguras, funcionais e bem instaladas</h2>
+          <p class="mt-5 text-base leading-8 text-text-muted">
+            Nossa missao e oferecer estruturas seguras, funcionais e bem instaladas, ajudando nossos clientes a realizarem eventos e projetos com mais conforto, protecao e tranquilidade.
+          </p>
+          <p class="mt-4 text-base leading-8 text-text-muted">
+            Seja para proteger convidados da chuva e do sol, criar uma area coberta para atendimento ou montar uma estrutura temporaria para uso comercial, nosso foco e entregar um servico organizado do inicio ao fim.
+          </p>
+        </article>
+
+        <article class="rounded-[28px] border border-emerald-950/10 bg-white p-6 shadow-sm sm:p-8">
+          <p class="section-eyebrow">Nossa Visao</p>
+          <h2 class="mt-3 text-3xl text-primary">Confianca, clareza e responsabilidade</h2>
+          <p class="mt-5 text-base leading-8 text-text-muted">
+            Queremos ser reconhecidos como uma empresa confiavel no segmento de locacao de tendas e instalacao de toldos, principalmente pela qualidade da montagem, clareza no atendimento e responsabilidade com a seguranca.
+          </p>
+          <p class="mt-4 text-base leading-8 text-text-muted">
+            Acreditamos que uma boa estrutura precisa unir tres pontos: resistencia, estetica e funcionalidade. Quando esses tres pontos caminham juntos, o evento fica mais seguro e o cliente evita dor de cabeca.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="rounded-[32px] border border-emerald-950/10 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+        <p class="section-eyebrow">Nossos Valores</p>
+        <h2 class="mt-3 text-3xl text-primary sm:text-4xl">Como guiamos cada atendimento</h2>
+        <div class="mt-8 grid gap-4 md:grid-cols-2">
+          {valores.map(({ icon: Icon, title, text }) => (
+            <article class="rounded-[28px] border border-emerald-950/10 bg-background/75 p-5">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white">
+                <Icon class="h-5 w-5" aria-hidden="true" />
+              </div>
+              <h3 class="mt-4 text-2xl text-primary">{title}</h3>
+              <p class="mt-3 text-sm leading-7 text-text-muted">{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="como-trabalhamos" class="section-padding pt-0">
+      <div class="grid gap-6 lg:grid-cols-[1fr_0.95fr]">
+        <article class="rounded-[32px] border border-emerald-950/10 bg-white p-6 shadow-sm sm:p-8">
+          <p class="section-eyebrow">Como Trabalhamos</p>
+          <h2 class="mt-3 text-3xl text-primary sm:text-4xl">Cada projeto comeca com uma leitura correta da necessidade</h2>
+          <p class="mt-5 text-base leading-8 text-text-muted">
+            Antes da locacao ou instalacao, buscamos entender a real necessidade do cliente. Com essas informacoes, conseguimos indicar opcoes mais adequadas, como tendas 3x3, 4x4, 5x5, 6x6, 8x8, 10x10 ou estruturas acopladas para areas maiores.
+          </p>
+          <p class="mt-4 text-base leading-8 text-text-muted">
+            Tambem trabalhamos com toldos e solucoes de cobertura conforme a necessidade de cada projeto.
+          </p>
+
+          <div class="mt-6 grid gap-3 sm:grid-cols-2">
+            {analiseInicial.map((item) => (
+              <p class="flex items-center gap-3 rounded-2xl border border-emerald-950/10 bg-background px-4 py-3 text-sm font-semibold text-text-main">
+                <CheckCircle2 class="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+                {item}
+              </p>
+            ))}
+          </div>
+        </article>
+
+        <article class="rounded-[32px] border border-emerald-950/10 bg-primary p-6 text-white shadow-sm sm:p-8">
+          <p class="text-xs font-bold uppercase tracking-[0.22em] text-accent">Compromisso com a montagem</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl">Qualidade do inicio ao fim</h2>
+          <p class="mt-5 text-base leading-8 text-white/80">
+            Uma tenda bem instalada precisa estar alinhada, firme, limpa e adequada ao uso proposto. Por isso, nossa equipe trabalha com atencao na montagem, na fixacao, no acabamento e na organizacao do espaco.
+          </p>
+          <p class="mt-4 text-base leading-8 text-white/80">
+            Tambem orientamos o cliente sobre boas praticas de uso durante o periodo de locacao. Nosso compromisso e entregar uma estrutura que ajude o evento a acontecer com mais seguranca, conforto e tranquilidade.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+        <article class="rounded-[32px] border border-emerald-950/10 bg-white p-6 shadow-sm sm:p-8">
+          <p class="section-eyebrow">Onde Atuamos</p>
+          <h2 class="mt-3 text-3xl text-primary sm:text-4xl">Estruturas para eventos, empresas e uso comercial</h2>
+          <p class="mt-5 text-base leading-8 text-text-muted">
+            Atendemos diferentes tipos de demanda e cada projeto recebe uma orientacao especifica, porque nem toda tenda serve para qualquer espaco. Muitas vezes, o detalhe que parece pequeno no orcamento e justamente o que evita problema no dia do evento.
+          </p>
+
+          <div class="mt-6 grid gap-3 sm:grid-cols-2">
+            {demandas.map((item) => (
+              <p class="rounded-2xl border border-emerald-950/10 bg-background px-4 py-3 text-sm font-semibold text-text-main">
+                {item}
+              </p>
+            ))}
+          </div>
+        </article>
+
+        <article class="rounded-[32px] border border-emerald-950/10 bg-white p-6 shadow-sm sm:p-8">
+          <p class="section-eyebrow">Responsavel Tecnico</p>
+          <h2 class="mt-3 text-3xl text-primary">Cleidsom Ferreira</h2>
+          <p class="mt-4 text-sm font-bold uppercase tracking-[0.16em] text-accent">
+            Tecnico em manutencao e instalacao de tendas e toldos em geral
+          </p>
+          <p class="mt-4 text-base leading-8 text-text-muted">
+            Mais de 8 anos de experiencia no mercado, com participacao em montagens, manutencoes e instalacoes em eventos sociais, espacos comerciais, areas abertas, imoveis residenciais e estruturas temporarias.
+          </p>
+
+          <div class="mt-6 grid gap-3">
+            <a class="group flex items-center justify-between rounded-2xl border border-emerald-950/10 bg-background px-4 py-3 text-sm font-semibold text-text-main transition hover:border-primary/30 hover:text-primary" href="https://www.facebook.com/cleidsom.ferreira.50" target="_blank" rel="noopener noreferrer">
+              Facebook
+              <ArrowRight class="h-4 w-4 transition group-hover:translate-x-1" aria-hidden="true" />
+            </a>
+            <a class="group flex items-center justify-between rounded-2xl border border-emerald-950/10 bg-background px-4 py-3 text-sm font-semibold text-text-main transition hover:border-primary/30 hover:text-primary" href="https://www.instagram.com/ferreiracleidsom/" target="_blank" rel="noopener noreferrer">
+              Instagram
+              <ArrowRight class="h-4 w-4 transition group-hover:translate-x-1" aria-hidden="true" />
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="rounded-[32px] border border-emerald-950/10 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+        <div class="grid gap-6 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+          <div>
+            <p class="section-eyebrow">Atendimento</p>
+            <h2 class="mt-3 text-3xl text-primary sm:text-4xl">Solicite um orcamento</h2>
+            <p class="mt-5 text-base leading-8 text-text-muted">
+              Nossa equipe atende clientes em Belo Horizonte, regiao metropolitana e cidades proximas. Realizamos locacao de tendas e servicos relacionados para eventos sociais, empresas, comercios, espacos abertos e necessidades temporarias de cobertura.
+            </p>
+            <p class="mt-4 text-base leading-8 text-text-muted">
+              Precisa de aluguel de tendas, instalacao de toldos ou manutencao de coberturas? Vamos entender sua necessidade, avaliar o melhor modelo de estrutura e orientar voce com clareza antes da contratacao.
+            </p>
+          </div>
+
+          <div class="rounded-[28px] border border-primary/10 bg-background p-6">
+            <p class="text-sm font-bold uppercase tracking-[0.16em] text-accent">Fale com a equipe</p>
+            <div class="mt-4 grid gap-3">
+              <a class="btn-primary w-full" href={getWhatsappUrl()} target="_blank" rel="noopener noreferrer">
+                Solicitar orcamento pelo WhatsApp
+              </a>
+              <a class="inline-flex min-h-11 items-center justify-center rounded-full border border-primary/15 bg-white px-5 py-3 text-sm font-bold text-primary transition hover:border-primary/35 hover:bg-primary/5" href="/contato">
+                Ir para a pagina de contato
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

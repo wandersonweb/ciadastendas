@@ -1,81 +1,61 @@
 ---
 import { Star, Quote } from 'lucide-astro';
-
-const stats = [
-  { label: "Serviços Realizados", value: "500+" },
-  { label: "Anos no Mercado", value: "10+" },
-  { label: "Clientes Satisfeitos", value: "100%" },
-  { label: "Bairros Atendidos em BH", value: "80+" }
-];
-
-const testimonials = [
-  {
-    name: "Ricardo Santos",
-    role: "Apartamento no Savassi",
-    content: "O resultado superou minhas expectativas. O sinteco ficou impecável e o serviço foi muito limpo. Recomendo fortemente a equipe!",
-    stars: 5
-  },
-  {
-    name: "Mariana Oliveira",
-    role: "Casa no Bandeirantes",
-    content: "Fizemos a restauração de um taco antigo e parecia impossível, mas eles deixaram como novo. Profissionais pontuais e educados.",
-    stars: 5
-  },
-  {
-    name: "Construtora Horizonte",
-    role: "Parceiro Comercial",
-    content: "Trabalhamos com a Sinteco BH em diversos projetos de alto padrão. O acabamento é sempre o diferencial que buscamos.",
-    stars: 5
-  }
-];
+import { stats, testimonials } from '../data/testimonials';
 ---
 
-<section class="section-padding overflow-hidden">
+<section class="section-padding overflow-hidden bg-background relative">
+  <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10"></div>
   <div class="grid lg:grid-cols-3 gap-16 items-center">
     <!-- Stats -->
     <div class="lg:col-span-1 space-y-8">
       <div class="space-y-4">
-        <h2 class="text-primary font-bold uppercase tracking-[0.2em] text-sm">Social Proof</h2>
-        <p class="text-4xl font-bold text-text-main leading-tight">Confiança construída metro a metro</p>
+        <p class="section-eyebrow">Social Proof</p>
+        <h2 class="text-4xl lg:text-5xl font-serif text-text-main leading-tight">Aprovação de quem <em class="text-primary not-italic">confia</em> no nosso trabalho</h2>
       </div>
 
       <div class="grid grid-cols-2 gap-6">
         {stats.map(stat => (
           <div class="space-y-1">
-            <p class="text-3xl font-bold text-primary">{stat.value}</p>
+            <p class="text-4xl font-bold text-primary">{stat.value}</p>
             <p class="text-xs font-bold text-text-muted uppercase tracking-wider">{stat.label}</p>
           </div>
         ))}
       </div>
       
-      <div class="p-6 bg-stone-900 rounded-2xl text-white space-y-4">
-        <p class="text-sm font-medium opacity-80 italic">"Referência em acabamento de luxo e restauração técnica em Belo Horizonte."</p>
-        <div class="flex items-center gap-2">
+      <div class="p-8 bg-primary rounded-[2rem] text-white space-y-4 shadow-xl relative overflow-hidden">
+        <div class="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+        <p class="text-base font-medium opacity-90 italic">"Uma experiência transformadora, que trouxe vida e harmonia para o meu dia a dia."</p>
+        <div class="flex items-center gap-3">
           <div class="flex">
-            {[1,2,3,4,5].map(() => <Star class="w-4 h-4 fill-amber-400 text-amber-400" />)}
+            {[1,2,3,4,5].map(() => <Star class="w-5 h-5 fill-accent text-accent" />)}
           </div>
-          <span class="text-xs font-bold uppercase tracking-widest">Google Reviews</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-white/80">Avaliações</span>
         </div>
       </div>
     </div>
 
     <!-- Testimonials -->
-    <div class="lg:col-span-2 grid md:grid-cols-2 gap-6 relative">
-      <div class="absolute -top-12 -right-12 text-stone-100 -z-10">
+    <div class="lg:col-span-2 grid md:grid-cols-2 gap-8 relative">
+      <div class="absolute -top-12 -right-12 text-primary/10 -z-10">
         <Quote class="w-48 h-48" />
       </div>
 
       {testimonials.map((t, i) => (
-        <div class={i === 2 ? "md:col-span-2 card-premium p-8 bg-white" : "card-premium p-8 bg-white"}>
-          <div class="flex gap-1 mb-4">
-            {Array.from({ length: t.stars }).map(() => <Star class="w-4 h-4 fill-primary text-primary" />)}
+        <div class={i === 2 ? "md:col-span-2 card-premium p-10 bg-white" : "card-premium p-10 bg-white"}>
+          <div class="flex gap-1 mb-6">
+            {Array.from({ length: t.stars }).map(() => <Star class="w-5 h-5 fill-yellow-500 text-yellow-500" />)}
           </div>
-          <p class="text-text-main font-medium mb-6 leading-relaxed italic">
+          <p class="text-text-main font-serif font-medium mb-8 text-2xl leading-relaxed italic">
             "{t.content}"
           </p>
-          <div>
-            <p class="font-bold text-text-main">{t.name}</p>
-            <p class="text-xs text-text-muted uppercase font-bold tracking-widest">{t.role}</p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">
+              {t.name.charAt(0)}
+            </div>
+            <div>
+              <p class="font-bold text-text-main text-lg">{t.name}</p>
+              <p class="text-xs text-text-muted uppercase font-bold tracking-widest">{t.role}</p>
+            </div>
           </div>
         </div>
       ))}

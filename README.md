@@ -1,43 +1,98 @@
-# Astro Starter Kit: Minimal
+# Companhia Tenda
+
+Site institucional em Astro para a `Companhia Tenda`, com foco em SEO local, páginas comerciais, blog e páginas dinâmicas por cidade.
+
+## Stack
+
+- `Astro 6`
+- `Tailwind CSS 4`
+- `astro-seo`
+- `lucide-astro`
+
+## Comandos
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
+npm run build
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Mapa rápido de edição
 
-## 🚀 Project Structure
+### Dados principais da empresa
 
-Inside of your Astro project, you'll see the following folders and files:
+Edite [src/data/site.ts](src/data/site.ts)
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Esse arquivo controla:
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- nome da empresa
+- telefone e link do WhatsApp
+- e-mail
+- endereço
+- meta title e meta description globais
+- links do menu
+- links rápidos do rodapé
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Páginas comerciais principais
 
-Any static assets, like images, can be placed in the `public/` directory.
+Edite [src/data/siloPages.ts](src/data/siloPages.ts)
 
-## 🧞 Commands
+Esse arquivo controla o conteúdo das páginas:
 
-All commands are run from the root of the project, from a terminal:
+- `/aluguel-de-tendas-para-eventos`
+- `/aluguel-de-tenda-em-bh`
+- `/aluguel-de-tendas-valor`
+- `/aluguel-de-tenda-para-casamento`
+- `/aluguel-de-toldos`
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Cada objeto define:
 
-## 👀 Want to learn more?
+- `slug`
+- `title` do H1
+- `seoTitle`
+- `seoDescription`
+- `description`
+- `intro`
+- `articleLead`
+- `articleSections`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Páginas por cidade
+
+Edite [src/data/cidadesTendas.ts](src/data/cidadesTendas.ts)
+
+As páginas são geradas dinamicamente pela rota [src/pages/[slug].astro](src/pages/%5Bslug%5D.astro).
+
+Exemplos:
+
+- `/aluguel-de-tendas-em-contagem`
+- `/aluguel-de-tendas-em-betim`
+- `/aluguel-de-tendas-em-lagoa-santa`
+
+### Blog
+
+Edite [src/data/blogPosts.ts](src/data/blogPosts.ts)
+
+Importante: o blog atual nao usa os arquivos `.mdx` de `src/content/blog` para renderizar as rotas principais.
+
+### Home
+
+A home está em [src/pages/index.astro](src/pages/index.astro) e monta a página com estes componentes:
+
+- `Hero`
+- `QuickCTA`
+- `ModelsSection`
+- `AboutPreview`
+- `BlogPreview`
+- `SocialProof`
+
+## Documentação completa
+
+Leia [docs/GUIA_DO_PROJETO.md](docs/GUIA_DO_PROJETO.md) para entender:
+
+- arquitetura real do projeto
+- origem de cada rota
+- quais arquivos estão ativos
+- quais arquivos parecem legados/placeholders
+- como editar sem quebrar SEO ou conteúdo
+- checklist para futuras mudanças feitas por pessoas ou IAs

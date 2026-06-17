@@ -1,0 +1,45 @@
+---
+import { Factory, Landmark, MoveDiagonal, Tent, Zap } from 'lucide-astro';
+import ServiceCard from './ServiceCard.astro';
+
+const models = [
+  {
+    title: 'Tenda Piramidal',
+    description: 'Ideal para grandes áreas livres, com encaixe modular rápido.',
+    icon: Tent,
+  },
+  {
+    title: 'Tenda Sanfonada / Pantográfica',
+    description: 'Praticidade e rapidez para eventos dinâmicos e ações promocionais.',
+    icon: Zap,
+  },
+  {
+    title: 'Chapéu de Bruxa',
+    description: 'Design cônico sofisticado para recepções, lounges e entradas de eventos.',
+    icon: Landmark,
+  },
+  {
+    title: 'Tendas Tensionadas',
+    description: 'Flexibilidade estética e cobertura elegante para grandes vãos.',
+    icon: MoveDiagonal,
+  },
+  {
+    title: 'Tenda Galpão / Duas Águas',
+    description: 'Estrutura robusta para armazenagem, feiras industriais e operações temporárias.',
+    icon: Factory,
+  },
+];
+---
+
+<section id="modelos" class="section-padding">
+  <div class="max-w-3xl">
+    <p class="section-eyebrow">Modelos e aplicações</p>
+    <h2 class="mt-3 text-4xl text-primary sm:text-5xl">Locação de Tendas</h2>
+    <p class="mt-5 text-lg leading-8 text-text-muted">
+      Trabalhamos com estruturas versáteis para eventos sociais, ações corporativas, feiras, armazenagem temporária e operações industriais.
+    </p>
+  </div>
+  <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {models.map((model) => <ServiceCard {...model} />)}
+  </div>
+</section>

@@ -1,0 +1,131 @@
+---
+import '../styles/global.css';
+import { SEO } from 'astro-seo';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = site.ogImage,
+  canonicalURL: canonicalURLProp,
+  type = 'website',
+  noindex = false,
+} = Astro.props;
+
+const normalizeCanonicalURL = (url: string | URL) => {
+  const normalized = new URL(url, Astro.site ?? site.siteUrl);
+  normalized.pathname = normalized.pathname
+    .replace(/\/index\.html$/, '/')
+    .replace(/\.html$/, '');
+
+  if (normalized.pathname !== '/') {
+    normalized.pathname = normalized.pathname.replace(/\/$/, '');
+  }
+
+  normalized.search = '';
+  normalized.hash = '';
+
+  return normalized.href;
+};
+
+const canonicalURL = normalizeCanonicalURL(canonicalURLProp ?? Astro.url);
+const sameAs = [site.social.facebook, site.social.instagram, site.social.linkedin].filter(
+  (url) => typeof url === 'string' && /^https?:\/\//.test(url)
+);
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="google-site-verification" content="CNOEsYWBpuJ3BaObIxQg9tSQKR46eMk1s6K-XT8nX80" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNXTVPNFG7"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MNXTVPNFG7');
+    </script>
+    <SEO
+      title={title}
+      titleTemplate={`%s | ${site.name}`}
+      description={description}
+      canonical={canonicalURL}
+      noindex={noindex}
+      openGraph={{
+        basic: {
+          title,
+          type,
+          image,
+          url: canonicalURL,
+        },
+        optional: {
+          siteName: site.name,
+          description,
+          locale: 'pt_BR',
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        site: site.twitterHandle,
+        title,
+        description,
+        image,
+      }}
+      extend={{
+        meta: [
+          { name: 'theme-color', content: '#103f2a' },
+        ],
+      }}
+    />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: site.name,
+        image: new URL(site.ogImage, site.siteUrl).href,
+        "@id": site.siteUrl,
+        url: site.siteUrl,
+        telephone: site.phone,
+        email: site.email,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: site.address,
+          addressLocality: site.city,
+          addressRegion: "MG",
+          addressCountry: "BR",
+        },
+        openingHoursSpecification: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: site.businessHours.opens,
+          closes: site.businessHours.closes,
+        },
+        sameAs,
+      })}
+    />
+  </head>
+  <body>
+    <Navbar />
+    <slot />
+    <Footer />
+    <FloatingWhatsApp />
+  </body>
+</html>
