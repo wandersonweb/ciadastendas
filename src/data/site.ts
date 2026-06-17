@@ -49,3 +49,13 @@ export const serviceLinks = [
   { title: "Aluguel de Tenda para Casamento", href: "/aluguel-de-tenda-para-casamento" },
   { title: "Aluguel de Toldos", href: "/aluguel-de-toldos" },
 ];
+
+export const siloNetworkLinks = [
+  { title: "Aluguel de Tendas em BH", href: "/aluguel-de-tenda-em-bh" },
+  { title: "Aluguel de Tendas para Eventos", href: "/aluguel-de-tendas-para-eventos" },
+  { title: "Aluguel de Tenda para Casamento", href: "/aluguel-de-tenda-para-casamento" },
+  { title: "Aluguel de Tendas Valor", href: "/aluguel-de-tendas-valor" },
+  { title: "Aluguel de Toldos", href: "/aluguel-de-toldos" },
+  { title: "Cidades Atendidas", href: "/Cidades-Atendidas" },
+  { title: "Aluguel de Tendas em Contagem", href: "/aluguel-de-tendas-em-contagem" },
+];

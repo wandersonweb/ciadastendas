@@ -34,6 +34,10 @@ type SiloPageData = {
     description: string;
     icon: 'tent' | 'zap' | 'landmark';
   }[];
+  relatedLinks: {
+    title: string;
+    href: string;
+  }[];
 };
 
 export const cidadesTendas: CidadeTenda[] = [
@@ -1441,6 +1445,43 @@ export const cidadesTendas: CidadeTenda[] = [
   }
 ];
 
+function getCidadeChain(item: CidadeTenda) {
+  const index = cidadesTendas.findIndex((cidade) => cidade.slug === item.slug);
+  const previous = index > 0 ? cidadesTendas[index - 1] : null;
+  const next = index >= 0 && index < cidadesTendas.length - 1 ? cidadesTendas[index + 1] : null;
+
+  return { previous, next };
+}
+
+function buildCidadeRelatedLinks(item: CidadeTenda) {
+  const { previous, next } = getCidadeChain(item);
+
+  return [
+    previous ? { title: `Aluguel de Tendas em ${previous.cidade}`, href: `/${previous.slug}` } : null,
+    next ? { title: `Aluguel de Tendas em ${next.cidade}`, href: `/${next.slug}` } : null,
+    { title: 'Aluguel de Tendas em BH', href: '/aluguel-de-tenda-em-bh' },
+    { title: 'Cidades Atendidas', href: '/Cidades-Atendidas' },
+  ].filter(Boolean) as { title: string; href: string }[];
+}
+
+function buildCidadeChainParagraph(item: CidadeTenda) {
+  const { previous, next } = getCidadeChain(item);
+
+  if (previous && next) {
+    return `Tambem atendemos <a href="/${previous.slug}">${previous.cidade}</a>, <a href="/${next.slug}">${next.cidade}</a> e outras cidades da regiao. Onde quer que seu evento aconteca, nossa equipe esta pronta para indicar e montar a estrutura ideal para voce.`;
+  }
+
+  if (next) {
+    return `Tambem atendemos <a href="/${next.slug}">${next.cidade}</a> e outras cidades proximas. Onde quer que seu evento aconteca, nossa equipe esta pronta para indicar e montar a estrutura ideal para voce.`;
+  }
+
+  if (previous) {
+    return `Tambem atendemos <a href="/${previous.slug}">${previous.cidade}</a> e Belo Horizonte. Se quiser ampliar a busca, veja tambem <a href="/aluguel-de-tenda-em-bh">aluguel de tendas em BH</a> para conhecer a pagina principal da operacao.`;
+  }
+
+  return `Se quiser ampliar a busca, veja tambem <a href="/aluguel-de-tenda-em-bh">aluguel de tendas em BH</a> para conhecer a pagina principal da operacao.`;
+}
+
 const defaultArticleImages = [
   {
     src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=420&q=80',
@@ -1524,8 +1565,9 @@ export function buildCidadeTendaPage(item: CidadeTenda): SiloPageData {
     articleTitleTag: 'p',
     articleLead: [
       `Precisa de aluguel de tendas em ${item.cidade} para seu evento?`,
-      `A Companhia Tenda oferece soluções completas para quem busca praticidade, proteção e uma estrutura adequada para eventos de diferentes portes. ${item.diferencialLocal}`,
-      `Nossa equipe auxilia na escolha da estrutura ideal de acordo com o espaço disponível, quantidade de participantes e necessidades específicas de cada ocasião, sempre com atendimento em ${item.cidade} e em cidades próximas da ${item.regiao}.`,
+      `A Companhia Tenda oferece soluções completas para quem busca praticidade, proteção e uma estrutura adequada para eventos de diferentes portes. ${item.diferencialLocal} Para entender a página central da operação, veja também <a href="/aluguel-de-tenda-em-bh">aluguel de tendas em BH</a>.`,
+      `Nossa equipe auxilia na escolha da estrutura ideal de acordo com o espaço disponível, quantidade de participantes e necessidades específicas de cada ocasião, sempre com atendimento em ${item.cidade} e em cidades próximas da ${item.regiao}. Também vale navegar por <a href="/Cidades-Atendidas">Cidades Atendidas</a> para conhecer outras áreas da cobertura regional.`,
+      buildCidadeChainParagraph(item),
     ],
     articleSections: [
       {
@@ -1533,7 +1575,7 @@ export function buildCidadeTendaPage(item: CidadeTenda): SiloPageData {
         heading: `Locação de Tendas em ${item.cidade} Para Todos os Tipos de Eventos`,
         paragraphs: [
           'A locação de tendas é uma alternativa eficiente para proteger pessoas, equipamentos, alimentos, móveis e áreas de circulação contra chuva, sol intenso e outras condições climáticas.',
-          `Atendemos clientes que precisam de estruturas para eventos sociais, corporativos, promocionais e institucionais em ${item.cidade}. Cada projeto recebe atenção especial para que a cobertura escolhida seja compatível com o local e o objetivo do evento.`,
+          `Atendemos clientes que precisam de estruturas para eventos sociais, corporativos, promocionais e institucionais em ${item.cidade}. Cada projeto recebe atenção especial para que a cobertura escolhida seja compatível com o local e o objetivo do evento. Se o foco for uma demanda mais ampla, você pode comparar com <a href="/aluguel-de-tendas-para-eventos">aluguel de tendas para eventos</a>.`,
           'Independentemente do porte da programação, buscamos oferecer uma estrutura funcional, bem montada e preparada para proporcionar mais tranquilidade durante todo o período de utilização.',
         ],
       },
@@ -1601,5 +1643,6 @@ export function buildCidadeTendaPage(item: CidadeTenda): SiloPageData {
     ],
     articleImages: defaultArticleImages,
     featuredModels: defaultFeaturedModels,
+    relatedLinks: buildCidadeRelatedLinks(item),
   };
 }

@@ -1,3 +1,6 @@
+import { siloNetworkLinks } from './site';
+import { cidadesTendas } from './cidadesTendas';
+
 type SiloModelIcon = 'tent' | 'zap' | 'landmark';
 
 type SiloModel = {
@@ -18,6 +21,11 @@ type SiloArticleSection = {
   listItems?: string[];
 };
 
+type RelatedLink = {
+  title: string;
+  href: string;
+};
+
 type SiloPage = {
   slug: string;
   title: string;
@@ -34,6 +42,7 @@ type SiloPage = {
   articleSections?: SiloArticleSection[];
   articleImages?: SiloImage[];
   featuredModels?: SiloModel[];
+  relatedLinks?: RelatedLink[];
 };
 
 const defaultHeroChecklist = [
@@ -83,6 +92,17 @@ const defaultArticleImages: SiloImage[] = [
   },
 ];
 
+const lastCidadeLink = (() => {
+  const lastCidade = cidadesTendas[cidadesTendas.length - 1];
+
+  if (!lastCidade) return null;
+
+  return {
+    title: `Aluguel de Tendas em ${lastCidade.cidade}`,
+    href: `/${lastCidade.slug}`,
+  };
+})();
+
 export const siloPages: SiloPage[] = [
   {
     slug: 'aluguel-de-tendas-para-eventos',
@@ -98,10 +118,11 @@ export const siloPages: SiloPage[] = [
     articleTitle: 'Aluguel de Tendas Para Eventos',
     articleImages: defaultArticleImages,
     featuredModels: defaultFeaturedModels,
+    relatedLinks: siloNetworkLinks,
     articleLead: [
-      'Seja para uma festa, feira, evento corporativo, acao promocional, casamento, evento religioso ou comemoracao em area aberta, a tenda ajuda a transformar o ambiente com mais conforto e seguranca.',
+      'Seja para uma festa, feira, evento corporativo, acao promocional, <a href="/aluguel-de-tenda-para-casamento">casamento</a>, evento religioso ou comemoracao em area aberta, a tenda ajuda a transformar o ambiente com mais conforto e seguranca.',
       'Em eventos, a estrutura nao e apenas um detalhe.',
-      'Ela protege pessoas, equipamentos, mesas, produtos, palco, buffet, som, iluminacao e areas de circulacao.',
+      'Ela protege pessoas, equipamentos, mesas, produtos, palco, buffet, som, iluminacao e areas de circulacao. Para uma visao mais ampla da operacao na capital, vale conferir tambem <a href="/aluguel-de-tenda-em-bh">aluguel de tendas em BH</a>.',
       'E quando o clima resolve participar sem ser convidado, a tenda salva o evento.',
     ],
     articleSections: [
@@ -247,7 +268,7 @@ export const siloPages: SiloPage[] = [
         heading: 'Quanto Custa Alugar Tendas Para Eventos?',
         paragraphs: [
           'O valor do aluguel de tendas para eventos varia conforme o projeto.',
-          'Por isso, o orcamento precisa ser personalizado.',
+          'Por isso, o orcamento precisa ser personalizado e normalmente conversa com o que voce encontra em <a href="/aluguel-de-tendas-valor">aluguel de tendas valor</a>.',
           'Assim, conseguimos indicar a estrutura correta e calcular o valor conforme a necessidade real do evento.',
         ],
         listItems: [
@@ -300,9 +321,10 @@ export const siloPages: SiloPage[] = [
     articleTitle: 'Como planejar aluguel de tendas em BH com mais segurança',
     articleImages: defaultArticleImages,
     featuredModels: defaultFeaturedModels,
+    relatedLinks: lastCidadeLink ? [...siloNetworkLinks, lastCidadeLink] : siloNetworkLinks,
     articleLead: [
-      'Está organizando um evento e precisa de uma estrutura segura, bonita e funcional? O aluguel de tendas em BH é uma das soluções mais procuradas para proteger convidados, equipamentos e garantir conforto durante toda a programação.',
-      'A Companhia Tenda atende Belo Horizonte e cidades da Região Metropolitana com estruturas para eventos corporativos, casamentos, aniversários, feiras, exposições, ações promocionais e celebrações em geral. Trabalhamos com diferentes modelos e tamanhos para atender desde pequenas reuniões até grandes eventos.',
+      'Está organizando um evento e precisa de uma estrutura segura, bonita e funcional? O <strong>aluguel de tendas em BH</strong> é uma das soluções mais procuradas para proteger convidados, equipamentos e garantir conforto durante toda a programação.',
+      `A Companhia Tenda atende Belo Horizonte e cidades da Região Metropolitana com estruturas para <a href="/aluguel-de-tendas-para-eventos">eventos</a>, <a href="/aluguel-de-tenda-para-casamento">casamentos</a>, aniversários, feiras, exposições, ações promocionais e celebrações em geral. Trabalhamos com diferentes modelos e tamanhos para atender desde pequenas reuniões até grandes eventos. A navegação local também se fecha com <a href="${lastCidadeLink?.href ?? '/Cidades-Atendidas'}">${lastCidadeLink?.title ?? 'a última cidade da cadeia local'}</a>.`,
     ],
     articleSections: [
       {
@@ -334,7 +356,7 @@ export const siloPages: SiloPage[] = [
         heading: 'Nossos Serviços de Locação de Tendas',
         paragraphs: [
           'A Companhia Tenda oferece soluções completas para quem busca qualidade, segurança e praticidade na locação de estruturas para eventos.',
-          'Nossa equipe auxilia desde a escolha da tenda ideal até a montagem e desmontagem, garantindo que tudo esteja pronto dentro do prazo combinado. Atendemos eventos em Belo Horizonte, Contagem, Betim, Nova Lima, Lagoa Santa, Ribeirão das Neves, Santa Luzia e demais cidades da região.',
+          'Nossa equipe auxilia desde a escolha da tenda ideal até a montagem e desmontagem, garantindo que tudo esteja pronto dentro do prazo combinado. Atendemos eventos em Belo Horizonte, <a href="/aluguel-de-tendas-em-contagem">Contagem</a>, Betim, Nova Lima, Lagoa Santa, Ribeirão das Neves, Santa Luzia e demais cidades da região.',
         ],
       },
       {
@@ -401,11 +423,12 @@ export const siloPages: SiloPage[] = [
     articleTitle: 'Aluguel de Tendas: Valor e Preço Para Eventos',
     articleImages: defaultArticleImages,
     featuredModels: defaultFeaturedModels,
+    relatedLinks: siloNetworkLinks,
     articleLead: [
       'O valor do aluguel de tendas pode variar conforme o tamanho da estrutura, o modelo escolhido, o local do evento e o período de locação.',
       'Por esse motivo, não existe um preço único que atenda todos os tipos de eventos.',
-      'Uma festa pequena pode precisar apenas de uma cobertura compacta. Já um casamento, feira, exposição ou evento corporativo pode exigir várias tendas integradas, fechamentos laterais e uma operação de montagem mais complexa.',
-      'Se você está pesquisando quanto custa alugar uma tenda para seu evento, esta página vai ajudar a entender quais fatores influenciam o orçamento e como escolher a estrutura ideal sem pagar por algo além da sua necessidade.',
+      'Uma festa pequena pode precisar apenas de uma cobertura compacta. Já um <a href="/aluguel-de-tenda-para-casamento">casamento</a>, feira, exposição ou evento corporativo pode exigir várias tendas integradas, fechamentos laterais e uma operação de montagem mais complexa.',
+      'Se você está pesquisando quanto custa alugar uma tenda para seu evento, esta página vai ajudar a entender quais fatores influenciam o orçamento e como escolher a estrutura ideal sem pagar por algo além da sua necessidade. Para uma visão geral da operação local, veja também <a href="/aluguel-de-tenda-em-bh">aluguel de tendas em BH</a>.',
     ],
     articleSections: [
       {
@@ -729,10 +752,11 @@ export const siloPages: SiloPage[] = [
     articleTitle: 'Aluguel de Tendas Para Casamento',
     articleImages: defaultArticleImages,
     featuredModels: defaultFeaturedModels,
+    relatedLinks: siloNetworkLinks,
     articleLead: [
       'Afinal, casamento tem data marcada, convidados confirmados, decoracao planejada e muitos detalhes envolvidos.',
       'O que nao da para planejar com tanta precisao e o clima. E e justamente ai que a tenda entra como uma aliada importante.',
-      'Ela protege convidados, buffet, decoracao, som, iluminacao, pista de danca e toda a estrutura do evento contra sol forte, chuva e mudancas inesperadas no tempo.',
+      'Ela protege convidados, buffet, decoracao, som, iluminacao, pista de danca e toda a estrutura do evento contra sol forte, chuva e mudancas inesperadas no tempo. Se voce ainda estiver comparando formatos de uso, vale ver tambem <a href="/aluguel-de-tendas-para-eventos">aluguel de tendas para eventos</a> e <a href="/aluguel-de-tenda-em-bh">aluguel de tendas em BH</a>.',
     ],
     articleSections: [
       {
@@ -819,7 +843,7 @@ export const siloPages: SiloPage[] = [
         level: 2,
         heading: 'Aluguel de Tendas Para Casamento Preço',
         paragraphs: [
-          'Quem pesquisa por aluguel de tendas para casamento preco normalmente quer saber quanto precisa investir para proteger o evento.',
+          'Quem pesquisa por aluguel de tendas para casamento preco normalmente quer saber quanto precisa investir para proteger o evento, e essa analise conversa diretamente com a pagina de <a href="/aluguel-de-tendas-valor">aluguel de tendas valor</a>.',
           'O valor pode variar bastante conforme o projeto.',
           'Isso acontece porque cada casamento tem um espaco, uma quantidade de convidados e uma necessidade diferente de montagem.',
           'Por isso, o ideal e solicitar um orcamento personalizado.',
@@ -928,9 +952,10 @@ export const siloPages: SiloPage[] = [
     articleTitle: 'Aluguel de Toldos',
     articleImages: defaultArticleImages,
     featuredModels: defaultFeaturedModels,
+    relatedLinks: siloNetworkLinks,
     articleLead: [
-      'Eles podem ser usados em festas, recepcoes, entradas comerciais, areas externas, eventos corporativos e espacos temporarios de atendimento.',
-      'Com a estrutura certa, seu evento fica mais organizado, seguro e preparado para mudancas no clima.',
+      'Eles podem ser usados em festas, recepcoes, entradas comerciais, areas externas, eventos corporativos e espacos temporarios de atendimento. Em muitos casos, funcionam como complemento de projetos de <a href="/aluguel-de-tendas-para-eventos">aluguel de tendas para eventos</a>.',
+      'Com a estrutura certa, seu evento fica mais organizado, seguro e preparado para mudancas no clima. Se a demanda principal for uma cobertura maior, vale comparar com <a href="/aluguel-de-tenda-em-bh">aluguel de tendas em BH</a>.',
     ],
     articleSections: [
       {

@@ -2,7 +2,7 @@
 import { ArrowRight, CheckCircle2, Landmark, MessageCircle, Tent, Zap } from 'lucide-astro';
 import AboutPreview from './AboutPreview.astro';
 import BlogPreview from './BlogPreview.astro';
-import { getWhatsappUrl, serviceLinks } from '../data/site';
+import { getWhatsappUrl, siloNetworkLinks } from '../data/site';
 
 interface ArticleImage {
   src: string;
@@ -22,7 +22,13 @@ interface FeaturedModel {
   icon: 'tent' | 'zap' | 'landmark';
 }
 
+interface RelatedLink {
+  title: string;
+  href: string;
+}
+
 interface Props {
+  slug?: string;
   title: string;
   intro: string;
   heroEyebrow?: string;
@@ -35,9 +41,11 @@ interface Props {
   articleSections?: ArticleSection[];
   articleImages?: ArticleImage[];
   featuredModels?: FeaturedModel[];
+  relatedLinks?: RelatedLink[];
 }
 
 const {
+  slug = '',
   title,
   intro,
   heroEyebrow = 'Locação de estruturas em Minas Gerais',
@@ -50,9 +58,12 @@ const {
   articleSections = [],
   articleImages = [],
   featuredModels = [],
+  relatedLinks = [],
 } = Astro.props;
 
-const related = serviceLinks.filter((link) => link.title !== title).slice(0, 4);
+const related = (relatedLinks.length ? relatedLinks : siloNetworkLinks)
+  .filter((link) => link.title !== title && link.href !== `/${slug}`)
+  .slice(0, 8);
 
 const iconMap = {
   tent: Tent,
@@ -150,9 +161,9 @@ const iconMap = {
         ))}
       </div>
 
-      <div class="prose max-w-none text-text-muted">
+      <div class="prose max-w-none text-text-muted [&_a]:font-semibold [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-accent">
         {articleLead.map((paragraph) => (
-          <p>{paragraph}</p>
+          <p set:html={paragraph} />
         ))}
 
         {articleSections.map((section) => {
@@ -161,7 +172,7 @@ const iconMap = {
             <section>
               <HeadingTag>{section.heading}</HeadingTag>
               {section.paragraphs.map((paragraph) => (
-                <p>{paragraph}</p>
+                <p set:html={paragraph} />
               ))}
               {section.listItems?.length ? (
                 <ul>
