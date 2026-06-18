@@ -90,7 +90,7 @@ Arquivo: [src/data/siloPages.ts](../src/data/siloPages.ts)
 
 Esse arquivo contém o conteúdo das páginas principais:
 
-- `/aluguel-de-tendas-para-eventos`
+- `/eventos`
 - `/aluguel-de-tenda-em-bh`
 - `/aluguel-de-tendas-valor`
 - `/aluguel-de-tenda-para-casamento`

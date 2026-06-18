@@ -2,6 +2,6 @@
 import SiloPage from '../components/SiloPage.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siloPages } from '../data/siloPages';
-const page = siloPages.find((item) => item.slug === 'aluguel-de-tendas-para-eventos')!;
+const page = siloPages.find((item) => item.slug === 'eventos')!;
 ---
 <BaseLayout title={page.title} description={page.description}><SiloPage {...page} /></BaseLayout>

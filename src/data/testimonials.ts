@@ -1,27 +1,30 @@
 export const stats = [
-  { label: "Projetos Realizados", value: "000+" },
-  { label: "Anos de Mercado", value: "00+" },
-  { label: "Clientes Satisfeitos", value: "000%" },
-  { label: "Regiões Atendidas", value: "00+" },
+  { label: "Eventos atendidos", value: "500+" },
+  { label: "Anos no mercado", value: "8+" },
+  { label: "Avaliações 5 estrelas", value: "98%" },
+  { label: "Cidades atendidas", value: "80+" },
 ];
 
 export const testimonials = [
   {
-    name: "Nome do Cliente",
-    role: "Tipo de projeto",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo non lectus facilisis posuere.",
+    name: "Ricardo Almeida",
+    role: "Evento corporativo em Contagem",
+    content:
+      "Fechamos a estrutura para uma ação com público rotativo e a montagem foi muito organizada. A equipe chegou no horário, orientou bem o espaço e entregou tudo com ótimo acabamento.",
     stars: 5,
   },
   {
-    name: "Nome do Cliente",
-    role: "Tipo de projeto",
-    content: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    name: "Mariana Souza",
+    role: "Casamento em Nova Lima",
+    content:
+      "Nos ajudaram a definir o tamanho ideal da cobertura e isso fez muita diferença no conforto dos convidados. O atendimento foi claro do começo ao fim e a montagem ficou impecável.",
     stars: 5,
   },
   {
-    name: "Nome da Empresa",
-    role: "Parceiro comercial",
-    content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    name: "Felipe Castro",
+    role: "Feira gastronômica em Belo Horizonte",
+    content:
+      "Precisávamos de uma estrutura segura, bonita e pronta dentro de um prazo curto. A Companhia Tenda entregou exatamente o que foi combinado e ainda ajudou na melhor configuração do layout.",
     stars: 5,
   },
 ];

@@ -18,10 +18,10 @@ const date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', y
   <main>
     <article>
       <header class="bg-primary pt-32 text-white">
-        <div class="section-padding py-20">
+        <div class="section-padding min-w-0 py-16 sm:py-20">
           <p class="section-eyebrow text-amber-200">{post.category}</p>
-          <h1 class="mt-4 max-w-4xl text-4xl text-white sm:text-5xl lg:text-6xl">{post.articleTitle ?? post.title}</h1>
-          <p class="mt-5 text-white/75">{date}</p>
+          <h1 class="mt-4 max-w-[11ch] min-w-0 whitespace-normal break-words text-3xl leading-tight text-white sm:max-w-4xl sm:text-5xl lg:text-6xl">{post.articleTitle ?? post.title}</h1>
+          <p class="mt-5 text-base text-white/75 sm:text-lg">{date}</p>
         </div>
       </header>
       <img class="h-[320px] w-full object-cover md:h-[460px]" src={post.image} alt={`Imagem de capa: ${post.title}`} loading="eager" />
@@ -36,8 +36,8 @@ const date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', y
 
           <div class="mx-auto mt-12 grid max-w-5xl gap-6">
             {post.sections.map((section) => (
-              <section class="rounded-[28px] border border-emerald-950/10 bg-white p-6 shadow-sm sm:p-8">
-                <h2 class="text-3xl text-primary sm:text-4xl">{section.heading}</h2>
+              <section class="overflow-hidden rounded-[28px] border border-emerald-950/10 bg-white p-5 shadow-sm sm:p-8">
+                <h2 class="text-2xl leading-tight text-primary sm:text-4xl">{section.heading}</h2>
 
                 {section.paragraphs?.length ? (
                   <div class="mt-5 space-y-5 text-base leading-8 text-text-muted">
@@ -57,7 +57,25 @@ const date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', y
                 ) : null}
 
                 {section.table ? (
-                  <div class="mt-6 overflow-x-auto rounded-2xl border border-emerald-950/10">
+                  <>
+                    <div class="mt-6 grid gap-4 md:hidden">
+                      {section.table.rows.map((row) => (
+                        <article class="rounded-2xl border border-emerald-950/10 bg-background p-4">
+                          <div class="grid gap-3">
+                            {row.map((cell, index) => (
+                              <div class="border-b border-emerald-950/10 pb-3 last:border-b-0 last:pb-0">
+                                <p class="text-[11px] font-black uppercase tracking-[0.18em] text-accent">
+                                  {section.table!.headers[index]}
+                                </p>
+                                <p class="mt-2 text-sm font-semibold leading-6 text-text-main">{cell}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+
+                    <div class="mt-6 hidden overflow-x-auto rounded-2xl border border-emerald-950/10 md:block">
                     <table class="min-w-[760px] w-full border-collapse bg-white text-left text-sm">
                       <thead class="bg-primary text-white">
                         <tr>
@@ -76,7 +94,8 @@ const date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', y
                         ))}
                       </tbody>
                     </table>
-                  </div>
+                    </div>
+                  </>
                 ) : null}
 
                 {section.terrainMethods?.length ? (
@@ -104,7 +123,7 @@ const date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', y
                 </p>
               </div>
               <a
-                class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-black text-dark transition hover:bg-amber-400"
+                class="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-black text-dark transition hover:bg-amber-400 sm:w-auto"
                 href={getWhatsappUrl('Olá, preciso de orientação técnica para locação de tenda')}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -127,7 +146,7 @@ const date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', y
             Ao planejar a locação, reúna data, cidade, quantidade de pessoas, metragem aproximada e finalidade da estrutura. Esses dados ajudam a indicar o modelo mais adequado e agilizam o orçamento.
           </p>
           <p>
-            Continue navegando por páginas como <a href="/aluguel-de-tendas-para-eventos">aluguel de tendas para eventos</a>, <a href="/aluguel-de-tenda-em-bh">aluguel de tenda em BH</a> e <a href="/aluguel-de-tendas-valor">aluguel de tendas valor</a>.
+            Continue navegando por páginas como <a href="/eventos">aluguel de tendas para eventos</a>, <a href="/aluguel-de-tenda-em-bh">aluguel de tenda em BH</a> e <a href="/aluguel-de-tendas-valor">aluguel de tendas valor</a>.
           </p>
         </div>
       )}

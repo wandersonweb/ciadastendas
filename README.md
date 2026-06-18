@@ -40,7 +40,7 @@ Edite [src/data/siloPages.ts](src/data/siloPages.ts)
 
 Esse arquivo controla o conteúdo das páginas:
 
-- `/aluguel-de-tendas-para-eventos`
+- `/eventos`
 - `/aluguel-de-tenda-em-bh`
 - `/aluguel-de-tendas-valor`
 - `/aluguel-de-tenda-para-casamento`

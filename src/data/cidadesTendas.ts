@@ -1575,7 +1575,7 @@ export function buildCidadeTendaPage(item: CidadeTenda): SiloPageData {
         heading: `Locação de Tendas em ${item.cidade} Para Todos os Tipos de Eventos`,
         paragraphs: [
           'A locação de tendas é uma alternativa eficiente para proteger pessoas, equipamentos, alimentos, móveis e áreas de circulação contra chuva, sol intenso e outras condições climáticas.',
-          `Atendemos clientes que precisam de estruturas para eventos sociais, corporativos, promocionais e institucionais em ${item.cidade}. Cada projeto recebe atenção especial para que a cobertura escolhida seja compatível com o local e o objetivo do evento. Se o foco for uma demanda mais ampla, você pode comparar com <a href="/aluguel-de-tendas-para-eventos">aluguel de tendas para eventos</a>.`,
+          `Atendemos clientes que precisam de estruturas para eventos sociais, corporativos, promocionais e institucionais em ${item.cidade}. Cada projeto recebe atenção especial para que a cobertura escolhida seja compatível com o local e o objetivo do evento. Se o foco for uma demanda mais ampla, você pode comparar com <a href="/eventos">aluguel de tendas para eventos</a>.`,
           'Independentemente do porte da programação, buscamos oferecer uma estrutura funcional, bem montada e preparada para proporcionar mais tranquilidade durante todo o período de utilização.',
         ],
       },

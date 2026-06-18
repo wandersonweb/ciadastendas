@@ -105,7 +105,7 @@ const lastCidadeLink = (() => {
 
 export const siloPages: SiloPage[] = [
   {
-    slug: 'aluguel-de-tendas-para-eventos',
+    slug: 'eventos',
     title: 'Aluguel de Tendas Para Eventos',
     seoTitle: 'Aluguel de Tendas Para Eventos | Locação e Montagem',
     seoDescription: 'Aluguel de tendas para eventos com montagem segura e estrutura sob medida. Atendemos festas, feiras, empresas, eventos sociais e barraquinhas de festa junina.',
@@ -324,7 +324,7 @@ export const siloPages: SiloPage[] = [
     relatedLinks: lastCidadeLink ? [...siloNetworkLinks, lastCidadeLink] : siloNetworkLinks,
     articleLead: [
       'Está organizando um evento e precisa de uma estrutura segura, bonita e funcional? O <strong>aluguel de tendas em BH</strong> é uma das soluções mais procuradas para proteger convidados, equipamentos e garantir conforto durante toda a programação.',
-      `A Companhia Tenda atende Belo Horizonte e cidades da Região Metropolitana com estruturas para <a href="/aluguel-de-tendas-para-eventos">eventos</a>, <a href="/aluguel-de-tenda-para-casamento">casamentos</a>, aniversários, feiras, exposições, ações promocionais e celebrações em geral. Trabalhamos com diferentes modelos e tamanhos para atender desde pequenas reuniões até grandes eventos. A navegação local também se fecha com <a href="${lastCidadeLink?.href ?? '/Cidades-Atendidas'}">${lastCidadeLink?.title ?? 'a última cidade da cadeia local'}</a>.`,
+      `A Companhia Tenda atende Belo Horizonte e cidades da Região Metropolitana com estruturas para <a href="/eventos">eventos</a>, <a href="/aluguel-de-tenda-para-casamento">casamentos</a>, aniversários, feiras, exposições, ações promocionais e celebrações em geral. Trabalhamos com diferentes modelos e tamanhos para atender desde pequenas reuniões até grandes eventos. A navegação local também se fecha com <a href="${lastCidadeLink?.href ?? '/Cidades-Atendidas'}">${lastCidadeLink?.title ?? 'a última cidade da cadeia local'}</a>.`,
     ],
     articleSections: [
       {
@@ -756,7 +756,7 @@ export const siloPages: SiloPage[] = [
     articleLead: [
       'Afinal, casamento tem data marcada, convidados confirmados, decoracao planejada e muitos detalhes envolvidos.',
       'O que nao da para planejar com tanta precisao e o clima. E e justamente ai que a tenda entra como uma aliada importante.',
-      'Ela protege convidados, buffet, decoracao, som, iluminacao, pista de danca e toda a estrutura do evento contra sol forte, chuva e mudancas inesperadas no tempo. Se voce ainda estiver comparando formatos de uso, vale ver tambem <a href="/aluguel-de-tendas-para-eventos">aluguel de tendas para eventos</a> e <a href="/aluguel-de-tenda-em-bh">aluguel de tendas em BH</a>.',
+      'Ela protege convidados, buffet, decoracao, som, iluminacao, pista de danca e toda a estrutura do evento contra sol forte, chuva e mudancas inesperadas no tempo. Se voce ainda estiver comparando formatos de uso, vale ver tambem <a href="/eventos">aluguel de tendas para eventos</a> e <a href="/aluguel-de-tenda-em-bh">aluguel de tendas em BH</a>.',
     ],
     articleSections: [
       {
@@ -954,7 +954,7 @@ export const siloPages: SiloPage[] = [
     featuredModels: defaultFeaturedModels,
     relatedLinks: siloNetworkLinks,
     articleLead: [
-      'Eles podem ser usados em festas, recepcoes, entradas comerciais, areas externas, eventos corporativos e espacos temporarios de atendimento. Em muitos casos, funcionam como complemento de projetos de <a href="/aluguel-de-tendas-para-eventos">aluguel de tendas para eventos</a>.',
+      'Eles podem ser usados em festas, recepcoes, entradas comerciais, areas externas, eventos corporativos e espacos temporarios de atendimento. Em muitos casos, funcionam como complemento de projetos de <a href="/eventos">aluguel de tendas para eventos</a>.',
       'Com a estrutura certa, seu evento fica mais organizado, seguro e preparado para mudancas no clima. Se a demanda principal for uma cobertura maior, vale comparar com <a href="/aluguel-de-tenda-em-bh">aluguel de tendas em BH</a>.',
     ],
     articleSections: [

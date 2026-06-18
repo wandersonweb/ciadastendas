@@ -6,7 +6,7 @@ export const blogPosts = [
     category: "Eventos",
     pubDate: "2026-05-12",
     image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80",
-    href: "/aluguel-de-tendas-para-eventos",
+    href: "/eventos",
     ctaLabel: "Ver página",
   },
   {
@@ -247,7 +247,7 @@ export const blogPosts = [
     category: "Corporativo",
     pubDate: "2026-06-15",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
-    href: "/aluguel-de-tendas-para-eventos",
+    href: "/eventos",
     ctaLabel: "Ver página",
   },
 ];

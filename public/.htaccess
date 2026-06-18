@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Redirects antigos para as novas URLs principais
+Redirect 301 /sobre /quem-somos
+Redirect 301 /aluguel-de-tendas-para-eventos /eventos
+
+# Entrega arquivos .html sem exigir a extensão na URL
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+# Usa a página 404 do site para URLs inexistentes
+ErrorDocument 404 /404

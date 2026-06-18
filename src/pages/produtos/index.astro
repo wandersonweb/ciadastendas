@@ -1,0 +1,112 @@
+---
+import { ArrowRight, BadgeCheck, Box, Factory, Sparkles, Tent } from 'lucide-astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { productLinks, products } from '../../data/products';
+import { getWhatsappUrl } from '../../data/site';
+
+const productIcons = [Tent, Sparkles, Factory, Box];
+---
+
+<BaseLayout title="Produtos para Eventos e Coberturas" description="Conheça os produtos da Companhia Tenda, com opções para eventos, ações promocionais, armazenagem temporária e estruturas de apoio.">
+  <main>
+    <section class="relative overflow-hidden bg-primary pt-32 text-white">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.18),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_28%)]"></div>
+      <div class="section-padding relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow text-amber-200">Produtos</p>
+          <h1 class="mt-4 text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">Estruturas para eventos, operações temporárias e áreas de apoio</h1>
+          <p class="mt-6 text-lg leading-8 text-white/78">
+            Reunimos nesta página os principais produtos que fazem parte da operação da Companhia Tenda. Cada solução atende um tipo de uso, espaço e necessidade de cobertura.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a class="btn-primary" href={getWhatsappUrl('Olá, quero conhecer os produtos da Companhia Tenda')} target="_blank" rel="noopener noreferrer">
+              Solicitar orientação pelo WhatsApp
+            </a>
+            <a class="btn-secondary" href="/como-comprar">
+              Como comprar
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          {['Coberturas para festas e eventos', 'Estruturas para ações promocionais', 'Soluções para operação e logística', 'Apoio complementar para público e equipe'].map((item, index) => {
+            const Icon = productIcons[index % productIcons.length];
+
+            return (
+              <article class="rounded-[28px] border border-white/12 bg-white/10 p-5 backdrop-blur">
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/12 text-amber-200">
+                  <Icon class="h-6 w-6" aria-hidden="true" />
+                </div>
+                <p class="mt-4 text-sm font-bold uppercase tracking-[0.16em] text-white/75">Linha de produtos</p>
+                <h2 class="mt-2 text-xl text-white">{item}</h2>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="max-w-3xl">
+        <p class="section-eyebrow">Catálogo</p>
+        <h2 class="mt-3 text-4xl text-primary sm:text-5xl">Veja os produtos disponíveis</h2>
+        <p class="mt-5 text-lg leading-8 text-text-muted">
+          Se você já sabe o que procura, pode ir direto para a página do produto. Se ainda estiver comparando opções, fale com a nossa equipe e explique o tipo de evento, o espaço e a quantidade de pessoas.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {products.map((product) => (
+          <article class="group overflow-hidden rounded-[32px] border border-primary/10 bg-white shadow-[0_18px_50px_-30px_rgba(16,63,42,0.3)] transition duration-300 hover:-translate-y-2 hover:border-primary/18 hover:shadow-[0_30px_90px_-38px_rgba(16,63,42,0.38)]">
+            <div class="relative">
+              <img class="h-56 w-full object-cover transition duration-500 group-hover:scale-105" src={product.image} alt={`Imagem ilustrativa de ${product.title}`} loading="lazy" />
+              <span class="absolute left-5 top-5 rounded-full bg-accent px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-dark shadow">
+                {product.badge}
+              </span>
+            </div>
+            <div class="p-6">
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-accent">{product.eyebrow}</p>
+              <h3 class="mt-3 text-2xl text-primary">{product.title}</h3>
+              <p class="mt-4 text-sm leading-7 text-text-muted">{product.description}</p>
+
+              <div class="mt-6 grid gap-2">
+                {product.highlights.slice(0, 2).map((item) => (
+                  <p class="flex items-start gap-3 text-sm font-semibold leading-6 text-text-main">
+                    <BadgeCheck class="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+                    <span>{item}</span>
+                  </p>
+                ))}
+              </div>
+
+              <a class="mt-7 inline-flex items-center gap-2 font-black text-primary transition group-hover:gap-3 group-hover:text-accent" href={`/produtos/${product.slug}`}>
+                Ver produto
+                <ArrowRight class="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="rounded-[32px] border border-primary/10 bg-background p-6 sm:p-8 lg:p-10">
+        <div class="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <p class="section-eyebrow">Navegação rápida</p>
+            <h2 class="mt-3 text-3xl text-primary sm:text-4xl">Acesse as páginas dos produtos</h2>
+          </div>
+          <a class="btn-primary" href="/contato">
+            Falar com a equipe
+          </a>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {productLinks.map((link) => (
+            <a class="inline-flex items-center rounded-full border border-primary/12 bg-white px-4 py-2 text-sm font-bold text-primary transition hover:border-primary/30 hover:bg-primary/5" href={link.href}>
+              {link.title}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

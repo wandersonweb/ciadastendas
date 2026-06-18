@@ -1,35 +1,109 @@
 ---
-import { Mail, MapPin, MessageCircle } from 'lucide-astro';
+import { ArrowRight, Clock3, Mail, MapPin, MessageCircle } from 'lucide-astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getWhatsappUrl, site } from '../data/site';
 ---
 
 <BaseLayout title="Contato para Aluguel de Tendas" description="Entre em contato com a Companhia Tenda para solicitar orçamento de aluguel de tendas para eventos, empresas, casamentos e operações temporárias.">
-  <main class="section-padding pt-36">
-    <div class="max-w-3xl">
-      <p class="section-eyebrow">Contato</p>
-      <h1 class="mt-4 text-4xl text-primary sm:text-5xl lg:text-6xl">Solicite seu orçamento</h1>
-      <p class="mt-6 text-lg leading-8 text-text-muted">
-        Informe cidade, data, tipo de evento, metragem aproximada e local de montagem. Com esses dados, nossa equipe consegue orientar a solução mais adequada.
-      </p>
-    </div>
+  <main>
+    <section class="section-padding pt-36">
+      <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Contato</p>
+          <h1 class="mt-4 text-4xl text-primary sm:text-5xl lg:text-6xl">Fale com a equipe e peça seu orçamento</h1>
+          <p class="mt-6 text-lg leading-8 text-text-muted">
+            Se você já sabe a data, a cidade e o tipo de estrutura que precisa, nosso atendimento fica ainda mais rápido. Mas, se ainda estiver em dúvida, a equipe também pode ajudar a dimensionar a melhor solução.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a class="btn-primary" href={getWhatsappUrl('Olá, quero solicitar um orçamento com a Companhia Tenda')} target="_blank" rel="noopener noreferrer">
+              Chamar no WhatsApp
+            </a>
+            <a class="btn-secondary !bg-primary !text-white !border-primary/40 hover:!bg-secondary" href="/como-comprar">
+              Ver como comprar
+            </a>
+          </div>
+        </div>
 
-    <div class="mt-10 grid gap-5 lg:grid-cols-3">
-      <a class="card-premium p-6" href={getWhatsappUrl()} target="_blank" rel="noopener noreferrer">
-        <MessageCircle class="h-8 w-8 text-accent" aria-hidden="true" />
-        <h2 class="mt-4 text-xl text-primary">WhatsApp</h2>
-        <p class="mt-2 text-text-muted">{site.phone}</p>
-      </a>
-      <a class="card-premium p-6" href={`mailto:${site.email}`}>
-        <Mail class="h-8 w-8 text-accent" aria-hidden="true" />
-        <h2 class="mt-4 text-xl text-primary">E-mail</h2>
-        <p class="mt-2 text-text-muted">{site.email}</p>
-      </a>
-      <article class="card-premium p-6">
-        <MapPin class="h-8 w-8 text-accent" aria-hidden="true" />
-        <h2 class="mt-4 text-xl text-primary">Endereço</h2>
-        <p class="mt-2 text-text-muted">{site.address}</p>
-      </article>
-    </div>
+        <article class="rounded-[32px] border border-primary/10 bg-primary p-6 text-white shadow-sm sm:p-8">
+          <p class="text-xs font-bold uppercase tracking-[0.22em] text-amber-200">Atendimento direto</p>
+          <h2 class="mt-3 text-3xl text-white">Quanto mais contexto, melhor a recomendação</h2>
+          <p class="mt-4 text-base leading-8 text-white/80">
+            Pode chamar no WhatsApp com data do evento, cidade, quantidade de pessoas, tipo de piso e fotos do local. Isso ajuda a equipe a orientar a estrutura certa com muito mais precisão.
+          </p>
+          <a class="mt-6 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.16em] text-amber-200" href={getWhatsappUrl('Olá, quero enviar informações do meu evento para orçamento')} target="_blank" rel="noopener noreferrer">
+            Enviar informações agora
+            <ArrowRight class="h-4 w-4" aria-hidden="true" />
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="grid gap-5 lg:grid-cols-3">
+        <a class="card-premium p-6" href={getWhatsappUrl()} target="_blank" rel="noopener noreferrer">
+          <MessageCircle class="h-8 w-8 text-accent" aria-hidden="true" />
+          <h2 class="mt-4 text-xl text-primary">WhatsApp</h2>
+          <p class="mt-2 text-text-muted">{site.phone}</p>
+          <p class="mt-4 text-sm font-bold uppercase tracking-[0.16em] text-accent">Resposta rápida</p>
+        </a>
+        <a class="card-premium p-6" href={`mailto:${site.email}`}>
+          <Mail class="h-8 w-8 text-accent" aria-hidden="true" />
+          <h2 class="mt-4 text-xl text-primary">E-mail</h2>
+          <p class="mt-2 text-text-muted">{site.email}</p>
+          <p class="mt-4 text-sm font-bold uppercase tracking-[0.16em] text-accent">Envio de briefing</p>
+        </a>
+        <article class="card-premium p-6">
+          <MapPin class="h-8 w-8 text-accent" aria-hidden="true" />
+          <h2 class="mt-4 text-xl text-primary">Endereço</h2>
+          <p class="mt-2 text-text-muted">{site.address}</p>
+          <p class="mt-4 text-sm font-bold uppercase tracking-[0.16em] text-accent">Base de atendimento</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="rounded-[32px] border border-primary/10 bg-background p-6 sm:p-8 lg:p-10">
+        <div class="grid gap-6 lg:grid-cols-[1fr_0.95fr] lg:items-center">
+          <div>
+            <p class="section-eyebrow">Antes do contato</p>
+            <h2 class="mt-3 text-3xl text-primary sm:text-4xl">Informações que ajudam no orçamento</h2>
+            <p class="mt-4 text-base leading-8 text-text-muted">
+              Para ganhar tempo, vale já separar cidade, data, tipo de evento, quantidade de pessoas, estrutura desejada e detalhes do espaço onde a montagem será feita.
+            </p>
+          </div>
+          <div class="grid gap-3">
+            {[
+              'Cidade e data do evento',
+              'Quantidade aproximada de pessoas',
+              'Tipo de piso e área disponível',
+              'Produto ou estrutura desejada',
+            ].map((item) => (
+              <p class="rounded-2xl border border-emerald-950/10 bg-white px-4 py-3 text-sm font-semibold text-text-main">{item}</p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="rounded-[32px] border border-primary/10 bg-dark p-6 text-white shadow-[0_30px_90px_-40px_rgba(8,22,16,0.8)] sm:p-8 lg:p-10">
+        <div class="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <div class="flex items-center gap-3 text-amber-200">
+              <Clock3 class="h-5 w-5" aria-hidden="true" />
+              <p class="text-xs font-bold uppercase tracking-[0.18em]">Atendimento em horário comercial</p>
+            </div>
+            <h2 class="mt-3 text-3xl text-white sm:text-4xl">Prefere resolver isso agora?</h2>
+            <p class="mt-4 text-base leading-8 text-white/80">
+              Clique no botão abaixo e fale direto no WhatsApp para receber orientação sobre produtos, metragem, montagem e logística.
+            </p>
+          </div>
+          <a class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-black text-dark transition hover:bg-amber-400" href={getWhatsappUrl('Olá, quero atendimento pelo WhatsApp para orçamento de estrutura')} target="_blank" rel="noopener noreferrer">
+            <MessageCircle class="h-5 w-5" aria-hidden="true" />
+            Mandar mensagem
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 </BaseLayout>

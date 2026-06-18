@@ -1,0 +1,579 @@
+---
+import {
+  ArrowRight,
+  Building2,
+  CheckCircle2,
+  Factory,
+  MapPin,
+  MessageCircle,
+  Package,
+  Settings,
+  ShieldCheck,
+  Store,
+  Tent,
+  Wrench,
+  Zap,
+} from 'lucide-astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getWhatsappUrl } from '../data/site';
+
+const heroHighlights = [
+  'Fabricação, fornecimento e venda de tendas',
+  'Modelos para eventos, empresas e uso profissional',
+  'Atendimento em BH, região metropolitana e Minas Gerais',
+];
+
+const quickCards = [
+  {
+    title: 'Modelos profissionais',
+    text: 'Tendas piramidais, sanfonadas, chapéu de bruxa, pavilhões e estruturas com calha.',
+    icon: Tent,
+  },
+  {
+    title: 'Venda em BH e região',
+    text: 'Orientação sobre modelo, medida, transporte, retirada, entrega e manutenção.',
+    icon: MapPin,
+  },
+  {
+    title: 'Uso recorrente',
+    text: 'Boa escolha para locadores, produtores, expositores e empresas que montam com frequência.',
+    icon: Building2,
+  },
+  {
+    title: 'Suporte técnico',
+    text: 'Ajuda para escolher estrutura, acabamento, peças e manutenção preventiva.',
+    icon: Wrench,
+  },
+];
+
+const eventUses = [
+  'Festas e casamentos',
+  'Eventos corporativos',
+  'Feiras e exposições',
+  'Ações promocionais',
+  'Eventos religiosos',
+  'Áreas comerciais',
+  'Pontos de atendimento',
+  'Recepções',
+  'Coberturas operacionais',
+  'Estruturas de apoio',
+];
+
+const purchaseFactors = [
+  'Qualidade da estrutura',
+  'Espessura e acabamento dos tubos',
+  'Tipo de tratamento do metal',
+  'Resistência da lona',
+  'Sistema de montagem',
+  'Disponibilidade de peças',
+  'Possibilidade de manutenção',
+  'Suporte após a compra',
+  'Adequação ao uso profissional',
+];
+
+const cityChecklist = [
+  'Cidade',
+  'Modelo desejado',
+  'Medida',
+  'Finalidade da tenda',
+  'Frequência de uso',
+  'Quantidade de unidades',
+  'Necessidade de entrega ou montagem',
+];
+
+const priceFactors = [
+  'Medidas da estrutura',
+  'Tipo de cobertura',
+  'Espessura dos tubos',
+  'Tratamento anticorrosivo',
+  'Modelo escolhido',
+  'Presença de calhas',
+  'Fechamentos laterais',
+  'Personalizações',
+  'Necessidade de transporte ou instalação',
+];
+
+const availableModels = [
+  {
+    title: 'Venda de Tendas Para Eventos',
+    text: 'Resumo rápido para quem busca comprar estruturas com foco em uso recorrente, praticidade operacional e melhor custo-benefício no longo prazo.',
+    headingTag: 'h2',
+  },
+  {
+    title: 'Tenda Piramidal',
+    text: 'Modelo muito procurado para eventos, feiras e coberturas temporárias, com excelente aproveitamento da área coberta.',
+    headingTag: 'h3',
+  },
+  {
+    title: 'Tenda Chapéu de Bruxa',
+    text: 'Formato elegante e acabamento visual diferenciado para recepções, casamentos, ações promocionais e eventos sociais.',
+    headingTag: 'h3',
+  },
+  {
+    title: 'Tenda Galvanizada a Fogo',
+    text: 'Estrutura com proteção reforçada contra corrosão, indicada para usos frequentes e ambientes mais expostos.',
+    headingTag: 'h3',
+  },
+  {
+    title: 'Tenda Piramidal com Calha',
+    text: 'Boa solução para acoplamento entre módulos, corredores cobertos e áreas formadas por várias tendas conectadas.',
+    headingTag: 'h3',
+  },
+  {
+    title: 'Tenda Chapéu de Bruxa com Calha',
+    text: 'Une apresentação visual com funcionalidade, ajudando na criação de áreas maiores com melhor direcionamento de água.',
+    headingTag: 'h3',
+  },
+  {
+    title: 'Tenda Sanfonada',
+    text: 'Estrutura dobrável com montagem rápida, indicada para feiras, eventos menores, ativações e pontos de venda.',
+    headingTag: 'h3',
+  },
+];
+
+const sanfonadas = [
+  {
+    title: 'Tenda Super Sanfonada de Aço 3x3',
+    text: 'Compacta, prática e versátil para feiras, ações comerciais, recepções e pontos de apoio.',
+  },
+  {
+    title: 'Tenda Super Sanfonada de Aço 4,5x3',
+    text: 'Área intermediária de cobertura para quem precisa de mais espaço sem partir para uma estrutura maior.',
+  },
+  {
+    title: 'Tenda Super Sanfonada de Aço 6x3',
+    text: 'Maior área coberta com montagem e transporte facilitados para eventos, feiras e ações promocionais.',
+  },
+  {
+    title: 'Tenda Sanfonada Profissional',
+    text: 'Estrutura reforçada para uso frequente, indicada para empresas, expositores, locadores e organizadores.',
+  },
+];
+
+const piramidais = [
+  {
+    title: 'Tenda Piramidal Profissional com Calhas Laterais',
+    text: 'Indicada para grandes áreas cobertas e eventos com vários módulos conectados.',
+  },
+  {
+    title: 'Tenda Piramidal Tubular',
+    text: 'Estrutura metálica com tubos e encaixes para festas, feiras, recepções e coberturas ao ar livre.',
+  },
+  {
+    title: 'Tenda Piramidal com Calha',
+    text: 'Melhora o escoamento da água e a união entre estruturas em corredores e grandes eventos.',
+  },
+  {
+    title: 'Tenda 6x6 com Calhas Laterais',
+    text: 'Boa área de cobertura para eventos médios e grandes, com possibilidade de acoplamento.',
+  },
+];
+
+const manufacturingSteps = [
+  'Definição do modelo',
+  'Escolha das medidas',
+  'Produção da estrutura metálica',
+  'Tratamento e acabamento',
+  'Produção ou instalação da lona',
+  'Teste de encaixes',
+  'Preparação de calhas e conexões',
+  'Avaliação de transporte e montagem',
+];
+
+const maintenanceItems = [
+  'Substituição de peças',
+  'Reparo de encaixes',
+  'Revisão da estrutura',
+  'Troca ou reparo de lonas',
+  'Correção de calhas',
+  'Reforço de componentes',
+  'Ajustes para melhorar a montagem',
+];
+
+const projectModels = [
+  'Tenda sanfonada',
+  'Tenda piramidal tubular',
+  'Tenda piramidal com calha',
+  'Tenda chapéu de bruxa tubular',
+  'Tenda galvanizada a fogo',
+  'Pavilhão de alumínio',
+  'Estruturas acopladas',
+  'Coberturas profissionais sob medida',
+];
+
+const chooseFactors = [
+  {
+    title: 'Frequência de uso',
+    text: 'Quem monta regularmente deve priorizar resistência, facilidade de montagem e disponibilidade de peças.',
+    icon: Zap,
+  },
+  {
+    title: 'Tamanho necessário',
+    text: 'Avalie a área que precisa ser coberta e os locais onde a tenda será utilizada.',
+    icon: Tent,
+  },
+  {
+    title: 'Transporte',
+    text: 'Algumas estruturas exigem veículos maiores, equipe especializada e espaço adequado para armazenamento.',
+    icon: Package,
+  },
+  {
+    title: 'Tipo de evento',
+    text: 'Eventos sociais costumam exigir acabamento mais refinado, enquanto estruturas operacionais pedem praticidade.',
+    icon: Store,
+  },
+  {
+    title: 'Manutenção',
+    text: 'Verifique se existem peças de reposição, assistência técnica e possibilidade de reparo após a compra.',
+    icon: Settings,
+  },
+];
+
+const faqs = [
+  {
+    question: 'Qual a melhor tenda para eventos?',
+    answer:
+      'A escolha depende da quantidade de pessoas, frequência de uso, local de instalação e necessidade de transporte. Tendas piramidais e chapéu de bruxa estão entre as opções mais utilizadas em eventos.',
+  },
+  {
+    question: 'Vale mais a pena comprar ou alugar uma tenda?',
+    answer:
+      'Para eventos ocasionais, a locação costuma ser suficiente. Empresas e profissionais que utilizam estruturas regularmente geralmente encontram melhor custo-benefício na compra.',
+  },
+  {
+    question: 'Qual a durabilidade de uma tenda profissional?',
+    answer:
+      'A durabilidade depende da qualidade dos materiais, das condições de uso e da manutenção realizada. Estruturas galvanizadas e bem conservadas costumam apresentar excelente vida útil.',
+  },
+  {
+    question: 'Vocês fabricam tendas sob medida?',
+    answer:
+      'Sim. Alguns projetos podem ser desenvolvidos conforme necessidades específicas de cobertura, medidas e aplicação.',
+  },
+  {
+    question: 'Vocês realizam manutenção de tendas?',
+    answer:
+      'Sim. Os serviços podem incluir revisão estrutural, troca de peças, reparo de lonas, correção de encaixes e reforço de componentes.',
+  },
+];
+---
+
+<BaseLayout title="Venda de Tendas" description="Venda de tendas para eventos, feiras, empresas e uso profissional em BH e região, com orientação sobre modelos, medidas e manutenção.">
+  <main>
+    <section class="relative overflow-hidden bg-primary pt-32 text-white">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.22),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]"></div>
+      <div class="section-padding relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow text-amber-200">Venda de estruturas</p>
+          <h1 class="mt-4 text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">Venda de Tendas</h1>
+          <div class="mt-6 space-y-5 text-lg leading-8 text-white/80">
+            <p>Está procurando uma empresa especializada em venda de tendas para eventos, empresas, feiras, ações promocionais ou uso profissional?</p>
+            <p>Trabalhamos com fabricação, fornecimento e venda de tendas em diversos modelos, tamanhos e configurações, atendendo clientes que buscam estruturas resistentes, duráveis e adequadas para diferentes aplicações.</p>
+            <p>Antes de indicar qualquer modelo, avaliamos área de cobertura, frequência de utilização, necessidade de transporte, tipo de evento e características do local de instalação.</p>
+          </div>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a class="btn-primary" href={getWhatsappUrl('Olá, quero solicitar um orçamento para compra de tenda')} target="_blank" rel="noopener noreferrer">
+              Solicitar orçamento
+            </a>
+            <a class="btn-secondary" href="/produtos">
+              Ver produtos
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          {quickCards.map(({ title, text, icon: Icon }) => (
+            <article class="rounded-[28px] border border-white/12 bg-white/10 p-5 backdrop-blur">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/12 text-amber-200">
+                <Icon class="h-6 w-6" aria-hidden="true" />
+              </div>
+              <h2 class="mt-4 text-xl text-white">{title}</h2>
+              <p class="mt-3 text-sm leading-7 text-white/72">{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="grid gap-6 md:grid-cols-3">
+        {heroHighlights.map((item) => (
+          <article class="rounded-[28px] border border-primary/10 bg-white p-6 shadow-[0_18px_50px_-30px_rgba(16,63,42,0.32)]">
+            <div class="flex items-start gap-3">
+              <ShieldCheck class="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+              <p class="text-sm font-semibold leading-7 text-text-main">{item}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+        <div class="max-w-4xl">
+          <p class="section-eyebrow">Artigo</p>
+          <h2 class="mt-3 text-3xl text-primary sm:text-4xl">Venda de Tendas Para Eventos</h2>
+          <div class="mt-6 space-y-5 text-base leading-8 text-text-muted">
+            <p>A venda de tendas para eventos é indicada para empresas, produtores, locadores, organizadores, instituições e profissionais que utilizam estruturas com frequência.</p>
+            <p>Comprar uma tenda pode ser uma escolha vantajosa para quem realiza montagens recorrentes ou deseja ampliar seu próprio estoque.</p>
+          </div>
+
+          <div class="mt-8 grid gap-3 sm:grid-cols-2">
+            {eventUses.map((item) => (
+              <p class="flex items-start gap-3 rounded-2xl border border-emerald-950/10 bg-background px-4 py-3 text-sm font-semibold leading-7 text-text-main">
+                <CheckCircle2 class="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+                <span>{item}</span>
+              </p>
+            ))}
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="grid gap-6 lg:grid-cols-2">
+        <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8">
+          <h2 class="text-3xl text-primary sm:text-4xl">Onde Comprar Tendas Para Eventos?</h2>
+          <p class="mt-5 text-base leading-8 text-text-muted">
+            Antes de escolher onde comprar tendas para eventos, avalie mais do que apenas o preço. Quem trabalha com montagens frequentes precisa olhar para estrutura, resistência, manutenção e suporte de longo prazo.
+          </p>
+          <div class="mt-6 grid gap-3">
+            {purchaseFactors.map((item) => (
+              <p class="rounded-2xl border border-emerald-950/10 bg-background px-4 py-3 text-sm font-semibold text-text-main">{item}</p>
+            ))}
+          </div>
+          <p class="mt-6 text-sm leading-7 text-text-muted">
+            Também vale verificar experiência na fabricação, disponibilidade de assistência técnica e facilidade para reposição de peças.
+          </p>
+        </article>
+
+        <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8">
+          <h2 class="text-3xl text-primary sm:text-4xl">Tendas Para Comprar Conforme Sua Necessidade</h2>
+          <div class="mt-5 space-y-5 text-base leading-8 text-text-muted">
+            <p>Temos diferentes modelos de tendas para comprar, desde opções compactas e dobráveis até estruturas maiores para eventos e uso profissional.</p>
+            <p>A escolha deve levar em conta a quantidade de pessoas, área que será coberta, frequência de montagem e facilidade de transporte.</p>
+            <p>Também é possível avaliar medidas, calhas, fechamentos, tipo de lona e acabamento da estrutura.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="grid gap-6 lg:grid-cols-[1fr_0.95fr]">
+        <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8">
+          <h2 class="text-3xl text-primary sm:text-4xl">Venda de Tendas em BH e Região</h2>
+          <div class="mt-5 space-y-5 text-base leading-8 text-text-muted">
+            <p>Realizamos venda de tendas em BH e atendemos clientes de Belo Horizonte, região metropolitana e outras cidades de Minas Gerais.</p>
+            <p>Também orientamos sobre retirada, entrega, montagem, transporte e manutenção, conforme o modelo escolhido e o local do cliente.</p>
+          </div>
+          <div class="mt-6 grid gap-3 sm:grid-cols-2">
+            {cityChecklist.map((item) => (
+              <p class="flex items-center gap-3 rounded-2xl border border-emerald-950/10 bg-background px-4 py-3 text-sm font-semibold text-text-main">
+                <MapPin class="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                {item}
+              </p>
+            ))}
+          </div>
+        </article>
+
+        <article class="rounded-[32px] border border-primary/10 bg-primary p-6 text-white shadow-sm sm:p-8">
+          <p class="text-xs font-bold uppercase tracking-[0.22em] text-amber-200">Fábrica de Tendas em BH</p>
+          <h2 class="mt-3 text-3xl text-white sm:text-4xl">Estrutura boa não depende só da armação</h2>
+          <div class="mt-5 space-y-5 text-base leading-8 text-white/80">
+            <p>Para quem pesquisa por fábrica de tendas em BH, é importante encontrar uma empresa que conheça a aplicação prática das estruturas.</p>
+            <p>Uma boa tenda precisa combinar resistência, encaixe correto, cobertura adequada, facilidade de montagem e disponibilidade de manutenção.</p>
+            <p>Trabalhamos com fabricação, fornecimento e orientação para diferentes modelos e usos.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+        <h2 class="text-3xl text-primary sm:text-4xl">Quanto Custa Comprar uma Tenda?</h2>
+        <p class="mt-5 max-w-4xl text-base leading-8 text-text-muted">
+          O preço de uma tenda varia conforme medidas, materiais, acabamento e necessidades específicas do projeto. Estruturas profissionais costumam exigir componentes mais robustos e, por isso, o valor deve ser analisado dentro do uso real da estrutura.
+        </p>
+        <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {priceFactors.map((item) => (
+            <p class="rounded-2xl border border-emerald-950/10 bg-background px-4 py-3 text-sm font-semibold text-text-main">{item}</p>
+          ))}
+        </div>
+      </article>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="max-w-3xl">
+        <p class="section-eyebrow">Catálogo</p>
+        <h2 class="mt-3 text-4xl text-primary sm:text-5xl">Modelos de Tendas Disponíveis</h2>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {availableModels.map((model) => (
+          <article class="rounded-[30px] border border-primary/10 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-34px_rgba(16,63,42,0.35)]">
+            {model.headingTag === 'h2' ? (
+              <h2 class="text-2xl text-primary">{model.title}</h2>
+            ) : (
+              <h3 class="text-2xl text-primary">{model.title}</h3>
+            )}
+            <p class="mt-4 text-sm leading-7 text-text-muted">{model.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="grid gap-6 lg:grid-cols-2">
+        <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8">
+          <h2 class="text-3xl text-primary sm:text-4xl">Tendas Sanfonadas Profissionais</h2>
+          <div class="mt-6 grid gap-4">
+            {sanfonadas.map((item) => (
+              <article class="rounded-[24px] border border-emerald-950/10 bg-background p-5">
+                <h3 class="text-xl text-primary">{item.title}</h3>
+                <p class="mt-3 text-sm leading-7 text-text-muted">{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </article>
+
+        <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8">
+          <h2 class="text-3xl text-primary sm:text-4xl">Tendas Piramidais Profissionais</h2>
+          <div class="mt-6 grid gap-4">
+            {piramidais.map((item) => (
+              <article class="rounded-[24px] border border-emerald-950/10 bg-background p-5">
+                <h3 class="text-xl text-primary">{item.title}</h3>
+                <p class="mt-3 text-sm leading-7 text-text-muted">{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="grid gap-6 lg:grid-cols-3">
+        <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8">
+          <h2 class="text-3xl text-primary">Tenda Chapéu de Bruxa Tubular</h2>
+          <p class="mt-5 text-base leading-8 text-text-muted">
+            A tenda chapéu de bruxa tubular combina estrutura metálica resistente com um formato mais alto e elegante. É muito utilizada em eventos sociais, recepções, casamentos, feiras e ações promocionais.
+          </p>
+        </article>
+
+        <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8">
+          <h2 class="text-3xl text-primary">Pavilhão de Alumínio</h2>
+          <p class="mt-5 text-base leading-8 text-text-muted">
+            O pavilhão de alumínio é indicado para feiras, exposições, armazenagem temporária, eventos empresariais e grandes áreas cobertas. É um projeto que exige análise específica de espaço, logística e dimensionamento.
+          </p>
+        </article>
+
+        <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8">
+          <h2 class="text-3xl text-primary">Fabricação de Tendas</h2>
+          <div class="mt-5 grid gap-3">
+            {manufacturingSteps.map((item) => (
+              <p class="rounded-2xl border border-emerald-950/10 bg-background px-4 py-3 text-sm font-semibold text-text-main">{item}</p>
+            ))}
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="grid gap-6 lg:grid-cols-[1fr_0.95fr]">
+        <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8">
+          <h2 class="text-3xl text-primary sm:text-4xl">Venda e Manutenção de Tendas em BH</h2>
+          <p class="mt-5 text-base leading-8 text-text-muted">
+            Além da venda, também trabalhamos com manutenção de tendas em BH. Realizar manutenções preventivas ajuda a ampliar a vida útil da estrutura e reduzir problemas durante o uso.
+          </p>
+          <div class="mt-6 grid gap-3 sm:grid-cols-2">
+            {maintenanceItems.map((item) => (
+              <p class="rounded-2xl border border-emerald-950/10 bg-background px-4 py-3 text-sm font-semibold text-text-main">{item}</p>
+            ))}
+          </div>
+        </article>
+
+        <article class="rounded-[32px] border border-primary/10 bg-primary p-6 text-white shadow-sm sm:p-8">
+          <p class="text-xs font-bold uppercase tracking-[0.22em] text-amber-200">Compra ou locação</p>
+          <h2 class="mt-3 text-3xl text-white sm:text-4xl">Venda ou Locação de Estruturas</h2>
+          <div class="mt-5 space-y-5 text-base leading-8 text-white/80">
+            <p>A escolha entre comprar ou alugar uma tenda depende principalmente da frequência de utilização.</p>
+            <p>A locação costuma ser indicada para eventos pontuais. Já a compra tende a oferecer melhor custo-benefício para empresas, produtores, organizadores e profissionais que utilizam estruturas regularmente.</p>
+            <p>Nossa equipe pode ajudar a avaliar qual opção atende melhor sua necessidade.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+        <h2 class="text-3xl text-primary sm:text-4xl">Alguns Projetos e Modelos Trabalhados</h2>
+        <p class="mt-5 max-w-4xl text-base leading-8 text-text-muted">
+          Entre os modelos e estruturas que podem fazer parte dos projetos estão os itens abaixo. Depois você pode inserir imagens, medidas, aplicações e miniaturas reais nesta seção.
+        </p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {projectModels.map((item) => (
+            <article class="rounded-[24px] border border-emerald-950/10 bg-background p-5">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white">
+                <Factory class="h-6 w-6" aria-hidden="true" />
+              </div>
+              <p class="mt-4 text-sm font-bold leading-6 text-text-main">{item}</p>
+            </article>
+          ))}
+        </div>
+      </article>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="max-w-3xl">
+        <h2 class="text-4xl text-primary sm:text-5xl">Como Escolher a Tenda Certa Para Comprar?</h2>
+        <p class="mt-5 text-lg leading-8 text-text-muted">
+          Antes da compra, vale analisar frequência de uso, tamanho necessário, transporte, tipo de evento e facilidade de manutenção. Esses pontos ajudam a evitar escolhas que parecem mais baratas no início, mas não atendem bem no uso real.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {chooseFactors.map(({ title, text, icon: Icon }) => (
+          <article class="rounded-[30px] border border-primary/10 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-34px_rgba(16,63,42,0.35)]">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white">
+              <Icon class="h-6 w-6" aria-hidden="true" />
+            </div>
+            <h3 class="mt-5 text-2xl text-primary">{title}</h3>
+            <p class="mt-4 text-sm leading-7 text-text-muted">{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-padding pt-0">
+      <article class="rounded-[32px] border border-primary/10 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+        <h2 class="text-3xl text-primary sm:text-4xl">Perguntas Frequentes Sobre Venda de Tendas</h2>
+        <div class="mt-8 grid gap-4">
+          {faqs.map((item) => (
+            <article class="rounded-[24px] border border-emerald-950/10 bg-background p-5">
+              <h3 class="text-xl text-primary">{item.question}</h3>
+              <p class="mt-3 text-sm leading-7 text-text-muted">{item.answer}</p>
+            </article>
+          ))}
+        </div>
+      </article>
+    </section>
+
+    <section class="section-padding pt-0">
+      <div class="rounded-[32px] border border-primary/10 bg-dark p-6 text-white shadow-[0_30px_90px_-40px_rgba(8,22,16,0.8)] sm:p-8 lg:p-10">
+        <div class="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div class="max-w-3xl">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-amber-200">Orçamento</p>
+            <h2 class="mt-3 text-3xl text-white sm:text-4xl">Solicite um Orçamento Para Comprar Sua Tenda</h2>
+            <div class="mt-4 space-y-4 text-base leading-8 text-white/80">
+              <p>Precisa comprar uma tenda para eventos, feiras, empresas, locação ou uso profissional?</p>
+              <p>Entre em contato com nossa equipe e informe o modelo desejado, as medidas necessárias e a finalidade da estrutura. Vamos analisar seu projeto para indicar a solução mais adequada.</p>
+            </div>
+          </div>
+          <a class="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-black text-dark transition hover:bg-amber-400" href={getWhatsappUrl('Olá, quero solicitar orçamento para comprar uma tenda')} target="_blank" rel="noopener noreferrer">
+            <MessageCircle class="h-5 w-5" aria-hidden="true" />
+            Solicitar orçamento para comprar uma tenda
+            <ArrowRight class="h-4 w-4" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
