@@ -23,6 +23,7 @@ Arquitetura principal:
 2. As páginas comerciais usam o componente `SiloPage`.
 3. O blog atual usa `src/data/blogPosts.ts`.
 4. As páginas por cidade são geradas dinamicamente a partir de `src/data/cidadesTendas.ts`.
+5. As páginas de venda e produto usam `src/pages/como-comprar.astro`, `src/pages/produtos/index.astro` e `src/pages/produtos/[slug].astro`.
 
 ## Estrutura principal
 
@@ -58,6 +59,7 @@ Monta a home com:
 Observação importante:
 
 - `BlogPreview` na home usa cards definidos dentro do próprio componente, não lê automaticamente `blogPosts.ts`.
+- a home hoje mistura intenção de locação e venda, então mudanças de posicionamento comercial costumam passar por `Hero`, `QuickCTA`, `ModelsSection`, `AboutPreview` e `site.ts`
 
 ## Arquivos de dados realmente importantes
 
@@ -83,6 +85,10 @@ Controla:
 - função `getWhatsappUrl()`
 
 Sempre que mudar telefone, e-mail, endereço, nome da empresa, CTA global, menu ou links rápidos, edite aqui primeiro.
+
+Observação:
+
+- `site.siteUrl` também é a base do canonical, do schema e do sitemap gerado no build
 
 ### 2. Páginas comerciais fixas
 
@@ -118,7 +124,31 @@ Regra prática:
 
 - se a mudança for apenas conteúdo de uma página comercial, quase sempre basta editar esse arquivo
 
-### 3. Páginas dinâmicas por cidade
+### 3. Páginas de venda e catálogo de produtos
+
+Arquivos:
+
+- [src/pages/como-comprar.astro](../src/pages/como-comprar.astro)
+- [src/data/products.ts](../src/data/products.ts)
+- [src/pages/produtos/index.astro](../src/pages/produtos/index.astro)
+- [src/pages/produtos/[slug].astro](../src/pages/produtos/%5Bslug%5D.astro)
+
+Funcionamento:
+
+- `/como-comprar` é uma landing page estática de venda
+- `products.ts` concentra os dados dos produtos
+- `/produtos` lista os produtos
+- `/produtos/[slug]` gera cada página individual a partir dos dados do produto
+
+Se quiser alterar textos, bullets, diferenciais, FAQ curta ou SEO dos produtos:
+
+- editar `src/data/products.ts`
+
+Se quiser alterar estrutura visual da listagem ou da página individual:
+
+- editar `src/pages/produtos/index.astro` ou `src/pages/produtos/[slug].astro`
+
+### 4. Páginas dinâmicas por cidade
 
 Arquivos:
 
@@ -145,7 +175,7 @@ Se quiser mudar só uma cidade específica:
 
 - editar os dados dessa cidade
 
-### 4. Blog
+### 5. Blog
 
 Arquivos:
 
@@ -204,6 +234,21 @@ Esse componente renderiza:
 
 Se várias páginas comerciais estiverem com o mesmo problema visual ou estrutural, quase certamente ele está aqui.
 
+### Prova social da home
+
+Arquivos:
+
+- [src/components/SocialProof.astro](../src/components/SocialProof.astro)
+- [src/data/testimonials.ts](../src/data/testimonials.ts)
+
+Hoje essa seção não está mais com placeholders.
+
+Ela usa:
+
+- estatísticas da marca
+- depoimentos com visual inspirado em review do Google
+- hover e cards personalizados da home
+
 ### Rodapé
 
 Arquivo: [src/components/Footer.astro](../src/components/Footer.astro)
@@ -236,12 +281,25 @@ Usa:
 - `site.address`
 - `getWhatsappUrl()`
 
+### Página 404 e redirects
+
+Arquivos:
+
+- [src/pages/404.astro](../src/pages/404.astro)
+- [public/.htaccess](../public/.htaccess)
+- [public/_redirects](../public/_redirects)
+
+Uso atual:
+
+- páginas inexistentes exibem a `404` com redirecionamento automático para a home
+- URLs antigas como `/sobre` e `/aluguel-de-tendas-para-eventos` redirecionam para `/quem-somos` e `/eventos`
+- isso ajuda tanto na experiência quanto na preservação de URLs antigas
+
 ## Arquivos que parecem legados ou placeholders
 
 Esses arquivos existem no repositório, mas hoje não parecem participar da experiência principal do site ou ainda estão com conteúdo genérico:
 
 - [src/data/services.ts](../src/data/services.ts)
-- [src/data/testimonials.ts](../src/data/testimonials.ts)
 - [src/components/Services.astro](../src/components/Services.astro)
 - [src/components/Testimonials.astro](../src/components/Testimonials.astro)
 - [src/content/blog/post-exemplo-01.mdx](../src/content/blog/post-exemplo-01.mdx)
@@ -269,12 +327,25 @@ Depois conferir:
 - contato
 - schema no `BaseLayout`
 - links de WhatsApp
+- sitemap na próxima build
 
 ### Alterar H1, SEO ou texto de uma página comercial
 
 Editar:
 
 - [src/data/siloPages.ts](../src/data/siloPages.ts)
+
+### Alterar a home com foco em locação e venda
+
+Editar, conforme o caso:
+
+- [src/components/Hero.astro](../src/components/Hero.astro)
+- [src/components/QuickCTA.astro](../src/components/QuickCTA.astro)
+- [src/components/ModelsSection.astro](../src/components/ModelsSection.astro)
+- [src/components/AboutPreview.astro](../src/components/AboutPreview.astro)
+- [src/data/site.ts](../src/data/site.ts)
+
+Esses arquivos concentram o discurso principal da home.
 
 ### Criar nova página comercial no mesmo padrão
 
@@ -293,6 +364,14 @@ const page = siloPages.find((item) => item.slug === 'novo-slug')!;
 ---
 <BaseLayout title={page.title} description={page.description}><SiloPage {...page} /></BaseLayout>
 ```
+
+### Alterar ou criar produto
+
+Editar:
+
+- [src/data/products.ts](../src/data/products.ts)
+
+O catálogo e as páginas internas são derivados desse arquivo.
 
 ### Criar um novo post do blog
 
@@ -348,7 +427,8 @@ Não precisa criar manualmente uma página em `src/pages`, porque a rota dinâmi
 3. Conferir se não existe placeholder antigo no trecho alterado
 4. Conferir impacto em SEO:
    `title`, `description`, canonical e schema
-5. Rodar:
+5. Conferir se slugs novos relevantes entraram no sitemap gerado
+6. Rodar:
 
 ```sh
 npm run build
@@ -360,7 +440,9 @@ Se alguém precisar entender este projeto em poucos minutos:
 
 - `site.ts` controla os dados da empresa
 - `siloPages.ts` controla as páginas comerciais principais
+- `products.ts` controla o catálogo e as páginas de produtos
+- `como-comprar.astro` controla a landing page de venda
 - `cidadesTendas.ts` gera as páginas locais automaticamente
 - `blogPosts.ts` controla o blog real
-- `SiloPage.astro` e `blog/[slug].astro` são os renderizadores centrais
+- `SiloPage.astro`, `produtos/[slug].astro` e `blog/[slug].astro` são renderizadores centrais
 - existem arquivos legados/placeholders no repositório e eles não devem ser a primeira opção de edição

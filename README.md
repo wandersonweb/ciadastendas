@@ -1,6 +1,6 @@
 # Companhia Tenda
 
-Site institucional em Astro para a `Companhia Tenda`, com foco em SEO local, páginas comerciais, blog e páginas dinâmicas por cidade.
+Site institucional em Astro para a `Companhia Tenda`, com foco em SEO local, páginas comerciais, blog, páginas dinâmicas por cidade e páginas de venda de produtos.
 
 ## Stack
 
@@ -31,6 +31,7 @@ Esse arquivo controla:
 - e-mail
 - endereço
 - meta title e meta description globais
+- `siteUrl` usado em canonical, schema e sitemap
 - links do menu
 - links rápidos do rodapé
 
@@ -56,6 +57,30 @@ Cada objeto define:
 - `intro`
 - `articleLead`
 - `articleSections`
+
+### Páginas de venda e produtos
+
+Edite:
+
+- [src/pages/como-comprar.astro](src/pages/como-comprar.astro)
+- [src/data/products.ts](src/data/products.ts)
+
+Esses arquivos controlam:
+
+- `/como-comprar`
+- `/produtos`
+- `/produtos/tenda-piramidal`
+- `/produtos/tenda-bolha`
+- `/produtos/galpao-duas-aguas`
+- `/produtos/banheiros-quimicos`
+- `/produtos/tenda-sanfonada`
+
+### Rotas institucionais fixas
+
+Edite diretamente:
+
+- [src/pages/quem-somos.astro](src/pages/quem-somos.astro)
+- [src/pages/contato.astro](src/pages/contato.astro)
 
 ### Páginas por cidade
 
@@ -85,6 +110,13 @@ A home está em [src/pages/index.astro](src/pages/index.astro) e monta a página
 - `AboutPreview`
 - `BlogPreview`
 - `SocialProof`
+
+## Sitemap e redirects
+
+- o sitemap e gerado automaticamente no `build` pelo `@astrojs/sitemap`
+- a origem usada e `https://ciadastendas.com.br`
+- as rotas novas como `/quem-somos`, `/eventos`, `/como-comprar` e `/produtos` entram no sitemap gerado
+- redirects legados e tratamento de `404` estao em `public/.htaccess`, `public/_redirects` e [src/pages/404.astro](src/pages/404.astro)
 
 ## Documentação completa
 
