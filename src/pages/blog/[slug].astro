@@ -13,19 +13,20 @@ export function getStaticPaths() {
 
 const { post } = Astro.props;
 const date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }).format(new Date(`${post.pubDate}T12:00:00`));
+const postBannerImage = post.bannerImage ?? post.image;
 ---
 
 <BaseLayout
   title={post.title}
   description={post.description}
-  image={post.image}
+  image={postBannerImage}
   type="article"
   structuredData={[
     buildArticleSchema({
       title: post.articleTitle ?? post.title,
       description: post.description,
       url: new URL(`/blog/${post.slug}`, Astro.site ?? 'https://ciadastendas.com.br').href,
-      image: post.image,
+      image: postBannerImage,
       datePublished: post.pubDate,
       articleSection: post.category,
     }),
@@ -40,7 +41,7 @@ const date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', y
           <p class="mt-5 text-base text-white/75 sm:text-lg">{date}</p>
         </div>
       </header>
-      <img class="h-[320px] w-full object-cover md:h-[460px]" src={post.image} alt={`Imagem de capa: ${post.title}`} loading="eager" />
+      <img class="h-[320px] w-full object-cover md:h-[460px]" src={postBannerImage} alt={`Imagem de capa: ${post.title}`} loading="eager" />
       {post.sections ? (
         <div class="section-padding max-w-5xl">
           <div class="mx-auto max-w-3xl">

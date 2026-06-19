@@ -100,8 +100,6 @@ Exemplos:
 
 Edite [src/data/blogPosts.ts](src/data/blogPosts.ts)
 
-Importante: o blog atual nao usa os arquivos `.mdx` de `src/content/blog` para renderizar as rotas principais.
-
 ### Home
 
 A home está em [src/pages/index.astro](src/pages/index.astro) e monta a página com estes componentes:
@@ -153,6 +151,5 @@ Leia [docs/GUIA_DO_PROJETO.md](docs/GUIA_DO_PROJETO.md) para entender:
 - arquitetura real do projeto
 - origem de cada rota
 - quais arquivos estão ativos
-- quais arquivos parecem legados/placeholders
 - como editar sem quebrar SEO ou conteúdo
 - checklist para futuras mudanças feitas por pessoas ou IAs

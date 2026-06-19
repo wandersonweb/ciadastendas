@@ -71,23 +71,23 @@ const defaultFeaturedModels: SiloModel[] = [
 
 const defaultArticleImages: SiloImage[] = [
   {
-    src: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=420&q=80',
-    alt: 'Tenda montada para recepção ao ar livre',
+    src: '/images/aluguel-tendas-eventos.webp',
+    alt: 'Tenda montada para eventos ao ar livre',
   },
   {
-    src: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=420&q=80',
+    src: '/images/aluguel-tendas-bh.webp',
     alt: 'Estrutura temporária para evento corporativo',
   },
   {
-    src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=420&q=80',
-    alt: 'Evento com cobertura e iluminação profissional',
+    src: '/images/Tenda-sanfonada.webp',
+    alt: 'Cobertura para evento com estrutura profissional',
   },
   {
-    src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=420&q=80',
+    src: '/images/venda-de-tendas.webp',
     alt: 'Área coberta para feira e circulação de convidados',
   },
   {
-    src: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=420&q=80',
+    src: '/images/aluguel-venda-tenda-casamento.webp',
     alt: 'Tenda elegante para evento social',
   },
 ];

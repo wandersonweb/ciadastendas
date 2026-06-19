@@ -8,7 +8,6 @@ O foco aqui é responder rapidamente:
 
 - onde cada conteúdo está
 - quais arquivos realmente controlam o site atual
-- quais arquivos parecem legados ou placeholders
 - como fazer mudanças com segurança
 
 ## Visão geral
@@ -333,23 +332,6 @@ Uso atual:
 - URLs antigas como `/sobre` e `/aluguel-de-tendas-para-eventos` redirecionam para `/quem-somos` e `/eventos`
 - isso ajuda tanto na experiência quanto na preservação de URLs antigas
 
-## Arquivos que parecem legados ou placeholders
-
-Esses arquivos existem no repositório, mas hoje não parecem participar da experiência principal do site ou ainda estão com conteúdo genérico:
-
-- [src/data/services.ts](../src/data/services.ts)
-- [src/components/Services.astro](../src/components/Services.astro)
-- [src/components/Testimonials.astro](../src/components/Testimonials.astro)
-- [src/content/blog/post-exemplo-01.mdx](../src/content/blog/post-exemplo-01.mdx)
-- [src/content/blog/post-exemplo-02.mdx](../src/content/blog/post-exemplo-02.mdx)
-- [src/content/blog/post-exemplo-03.mdx](../src/content/blog/post-exemplo-03.mdx)
-- [src/layouts/Layout.astro](../src/layouts/Layout.astro)
-
-Importante:
-
-- não remover esses arquivos sem confirmar antes
-- mas também não assumir que editar neles mudará o site atual
-
 ## Fluxos de edição mais comuns
 
 ### Alterar telefone, endereço, e-mail ou nome da empresa
@@ -460,10 +442,9 @@ Observação:
 
 ### O que evitar assumir
 
-- que o blog usa MDX nas rotas ativas
 - que a home lê automaticamente todos os posts reais
 - que todos os componentes em `src/components` estão em uso
-- que arquivos com placeholders ainda participam da experiência final
+- que qualquer arquivo antigo fora do fluxo principal ainda participa da experiência final
 
 ### Como editar com menor risco
 
@@ -499,4 +480,4 @@ Se alguém precisar entender este projeto em poucos minutos:
 - `cidadesTendas.ts` gera as páginas locais automaticamente
 - `blogPosts.ts` controla o blog real
 - `SiloPage.astro`, `produtos/[slug].astro` e `blog/[slug].astro` são renderizadores centrais
-- existem arquivos legados/placeholders no repositório e eles não devem ser a primeira opção de edição
+- os componentes e dados ativos estão concentrados no fluxo acima; se um arquivo estiver fora disso, confirme uso antes de editar
