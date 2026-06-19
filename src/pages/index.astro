@@ -7,9 +7,21 @@ import QuickCTA from '../components/QuickCTA.astro';
 import SocialProof from '../components/SocialProof.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
+import { buildServiceSchema } from '../data/schema';
 ---
 
-<BaseLayout title={site.metaTitle} description={site.metaDescription}>
+<BaseLayout
+  title={site.metaTitle}
+  description={site.metaDescription}
+  structuredData={[
+    buildServiceSchema({
+      name: 'Aluguel e Venda de Tendas',
+      description: site.metaDescription,
+      url: site.siteUrl,
+      serviceType: 'Aluguel de tendas e venda de tendas',
+    }),
+  ]}
+>
   <main>
     <Hero />
     <QuickCTA />

@@ -2,6 +2,8 @@
 import { ArrowRight, Building2, MapPin, TentTree } from 'lucide-astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { cidadesTendas } from '../data/cidadesTendas';
+import { site } from '../data/site';
+import { buildCollectionPageSchema } from '../data/schema';
 
 const cidadesOrdenadas = [...cidadesTendas].sort((a, b) =>
   a.cidade.localeCompare(b.cidade, 'pt-BR'),
@@ -40,11 +42,27 @@ const destaques = [
     description: 'Essa página concentra o acesso às cidades atendidas e ajuda o Google a encontrar e relacionar melhor as páginas locais.',
   },
 ];
+const cidadeLinks = [
+  { name: 'Belo Horizonte', url: new URL('/aluguel-de-tenda-em-bh', site.siteUrl).href },
+  ...cidadesOrdenadas.map((cidade) => ({
+    name: cidade.cidade,
+    url: new URL(`/${cidade.slug}`, site.siteUrl).href,
+  })),
+];
 ---
 
 <BaseLayout
   title="Cidades Atendidas"
   description="Veja as cidades atendidas pela Companhia Tenda e acesse rapidamente as páginas locais de aluguel de tendas para eventos."
+  structuredData={[
+    buildCollectionPageSchema({
+      name: 'Cidades Atendidas',
+      description:
+        'Página com a lista de cidades atendidas pela Companhia Tenda para aluguel de tendas e venda de tendas.',
+      url: new URL('/Cidades-Atendidas', Astro.site ?? 'https://ciadastendas.com.br').href,
+      items: cidadeLinks,
+    }),
+  ]}
 >
   <main class="pb-20 pt-28 sm:pt-32">
     <section class="section-padding pt-8 lg:pt-12">

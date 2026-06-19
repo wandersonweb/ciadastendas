@@ -3,11 +3,27 @@ import { ArrowRight, BadgeCheck, Box, Factory, Sparkles, Tent } from 'lucide-ast
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { productLinks, products } from '../../data/products';
 import { getWhatsappUrl } from '../../data/site';
+import { buildCollectionPageSchema } from '../../data/schema';
 
 const productIcons = [Tent, Sparkles, Factory, Box];
 ---
 
-<BaseLayout title="Produtos para Eventos e Coberturas" description="Conheça os produtos da Companhia Tenda, com opções para eventos, ações promocionais, armazenagem temporária e estruturas de apoio.">
+<BaseLayout
+  title="Produtos para Eventos e Coberturas"
+  description="Conheça os produtos da Companhia Tenda, com opções para eventos, ações promocionais, armazenagem temporária e estruturas de apoio."
+  structuredData={[
+    buildCollectionPageSchema({
+      name: 'Produtos para Eventos e Coberturas',
+      description:
+        'Coleção de produtos e estruturas da Companhia Tenda para aluguel de tendas, venda de tendas e coberturas temporárias.',
+      url: new URL('/produtos', Astro.site ?? 'https://ciadastendas.com.br').href,
+      items: productLinks.map((item) => ({
+        name: item.title,
+        url: new URL(item.href, Astro.site ?? 'https://ciadastendas.com.br').href,
+      })),
+    }),
+  ]}
+>
   <main>
     <section class="relative overflow-hidden bg-primary pt-32 text-white">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.18),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_28%)]"></div>

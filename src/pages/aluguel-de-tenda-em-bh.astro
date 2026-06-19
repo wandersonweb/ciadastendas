@@ -2,6 +2,19 @@
 import SiloPage from '../components/SiloPage.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siloPages } from '../data/siloPages';
+import { buildServiceSchema } from '../data/schema';
 const page = siloPages.find((item) => item.slug === 'aluguel-de-tenda-em-bh')!;
 ---
-<BaseLayout title={page.seoTitle ?? page.title} description={page.seoDescription ?? page.description}><SiloPage {...page} /></BaseLayout>
+<BaseLayout
+  title={page.seoTitle ?? page.title}
+  description={page.seoDescription ?? page.description}
+  structuredData={[
+    buildServiceSchema({
+      name: page.title,
+      description: page.seoDescription ?? page.description,
+      url: new URL(`/${page.slug}`, Astro.site ?? 'https://ciadastendas.com.br').href,
+      serviceType: 'Aluguel de tendas em Belo Horizonte',
+      areaServed: ['Belo Horizonte', 'Regiao Metropolitana de Belo Horizonte'],
+    }),
+  ]}
+><SiloPage {...page} /></BaseLayout>

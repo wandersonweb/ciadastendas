@@ -4,7 +4,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getWhatsappUrl, site } from '../data/site';
 ---
 
-<BaseLayout title="Contato para Aluguel de Tendas" description="Entre em contato com a Companhia Tenda para solicitar orçamento de aluguel de tendas para eventos, empresas, casamentos e operações temporárias.">
+<BaseLayout
+  title="Contato para Aluguel de Tendas"
+  description="Entre em contato com a Companhia Tenda para solicitar orçamento de aluguel de tendas para eventos, empresas, casamentos e operações temporárias."
+  pageSchemaType="ContactPage"
+>
   <main>
     <section class="section-padding pt-36">
       <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">

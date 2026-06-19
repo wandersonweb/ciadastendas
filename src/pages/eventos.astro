@@ -2,6 +2,18 @@
 import SiloPage from '../components/SiloPage.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siloPages } from '../data/siloPages';
+import { buildServiceSchema } from '../data/schema';
 const page = siloPages.find((item) => item.slug === 'eventos')!;
 ---
-<BaseLayout title={page.title} description={page.description}><SiloPage {...page} /></BaseLayout>
+<BaseLayout
+  title={page.title}
+  description={page.description}
+  structuredData={[
+    buildServiceSchema({
+      name: page.title,
+      description: page.seoDescription ?? page.description,
+      url: new URL(`/${page.slug}`, Astro.site ?? 'https://ciadastendas.com.br').href,
+      serviceType: 'Aluguel de tendas para eventos',
+    }),
+  ]}
+><SiloPage {...page} /></BaseLayout>

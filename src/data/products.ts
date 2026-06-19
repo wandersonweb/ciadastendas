@@ -24,7 +24,7 @@ export const products: ProductItem[] = [
     description: 'Cobertura versátil para festas, feiras, recepções e eventos corporativos com montagem rápida e visual elegante.',
     seoTitle: 'Tenda Piramidal para Eventos | Companhia Tenda',
     seoDescription: 'Conheça a tenda piramidal da Companhia Tenda para eventos, recepções, feiras e áreas de apoio com montagem segura.',
-    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/Tenda-piramidal.webp',
     badge: 'Mais procurada',
     intro: [
       'A tenda piramidal é uma das estruturas mais utilizadas em eventos porque combina boa apresentação visual com montagem prática e modular.',
@@ -61,7 +61,7 @@ export const products: ProductItem[] = [
     description: 'Estrutura com impacto visual para eventos de marca, ações especiais e experiências que pedem destaque.',
     seoTitle: 'Tenda Bolha para Eventos Promocionais | Companhia Tenda',
     seoDescription: 'Veja aplicações da tenda bolha para ações promocionais, ativações de marca e eventos com forte apelo visual.',
-    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/Tenda-bolha-evento.webp',
     badge: 'Alto impacto visual',
     intro: [
       'A tenda bolha é indicada para projetos em que a cobertura também faz parte da cenografia ou da experiência do público.',
@@ -98,7 +98,7 @@ export const products: ProductItem[] = [
     description: 'Cobertura robusta para armazenagem temporária, áreas industriais, feiras e operações que exigem grande vão.',
     seoTitle: 'Galpão Duas Águas para Eventos e Operações | Companhia Tenda',
     seoDescription: 'Conheça o galpão duas águas para armazenagem temporária, feiras, operações industriais e grandes áreas cobertas.',
-    image: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/galpao-tenda-acoplada-duas-aguas.webp',
     badge: 'Grandes vãos',
     intro: [
       'O galpão duas águas é indicado para projetos que precisam de mais área coberta e uma operação estrutural mais robusta.',
@@ -135,7 +135,7 @@ export const products: ProductItem[] = [
     description: 'Estrutura complementar para eventos, obras, feiras e operações temporárias com foco em praticidade e organização.',
     seoTitle: 'Banheiros Químicos para Eventos | Companhia Tenda',
     seoDescription: 'Locação de banheiros químicos para eventos, feiras, obras e operações temporárias com atendimento consultivo.',
-    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/evento-tenda-banheiro-quimico.webp',
     badge: 'Apoio essencial',
     intro: [
       'Os banheiros químicos entram como item essencial em eventos e operações temporárias que precisam atender o público com mais conforto e organização.',
@@ -172,7 +172,7 @@ export const products: ProductItem[] = [
     description: 'Cobertura prática para feiras, ações promocionais, pontos de atendimento e eventos que pedem mobilidade.',
     seoTitle: 'Tenda Sanfonada para Feiras e Ações Promocionais | Companhia Tenda',
     seoDescription: 'Conheça a tenda sanfonada para feiras, ações promocionais, eventos rápidos e pontos de atendimento.',
-    image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/Tenda-sanfonada.webp',
     badge: 'Montagem ágil',
     intro: [
       'A tenda sanfonada é uma solução prática para ações em que rapidez de montagem e mobilidade contam muito.',

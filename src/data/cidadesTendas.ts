@@ -1484,24 +1484,24 @@ function buildCidadeChainParagraph(item: CidadeTenda) {
 
 const defaultArticleImages = [
   {
-    src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=420&q=80',
-    alt: 'Estrutura coberta para evento corporativo em área ampla',
+    src: '/images/Aluguel-barraca-de-feira.webp',
+    alt: 'Aluguel de barraca de feira para eventos e pontos de apoio',
   },
   {
-    src: 'https://images.unsplash.com/photo-1503428593586-e225b39bddfe?auto=format&fit=crop&w=420&q=80',
-    alt: 'Montagem de cobertura para área de apoio e circulação',
+    src: '/images/Aluguel-tenda-festa-15-anos.webp',
+    alt: 'Aluguel de tenda para festa de 15 anos',
   },
   {
-    src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=420&q=80',
-    alt: 'Evento com estrutura temporária e iluminação profissional',
+    src: '/images/Aluguel-tenda-para-obra.webp',
+    alt: 'Aluguel de tenda para obra e cobertura temporaria',
   },
   {
-    src: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=420&q=80',
-    alt: 'Feira com espaços cobertos para exposição e atendimento',
+    src: '/images/locacao-de-tenda.webp',
+    alt: 'Locacao de tenda para eventos e operacoes temporarias',
   },
   {
-    src: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=420&q=80',
-    alt: 'Área preparada para recepção de convidados sob cobertura',
+    src: '/images/Preco-aluguel-de-tenda.webp',
+    alt: 'Preco de aluguel de tenda para diferentes necessidades',
   },
 ];
 

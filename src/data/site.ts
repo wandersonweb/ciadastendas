@@ -11,7 +11,9 @@ export const site = {
   metaTitle: "Aluguel e Venda de Tenda em BH e Regiao",
   metaDescription: "Aluguel e venda de tendas elegantes, corporativas e industriais com atendimento consultivo para eventos, feiras, casamentos e operacoes temporarias.",
   siteUrl: "https://ciadastendas.com.br",
-  ogImage: "/images/placeholder.svg",
+  logo: "/images/Logo-tenda.png",
+  favicon: "/favicon.png",
+  ogImage: "/images/banner-aluguel-venda-tenda.webp",
   twitterHandle: "@ciadastendas",
   social: {
     instagram: "",
@@ -31,6 +33,7 @@ export const getWhatsappUrl = (message = site.whatsappMessage) =>
 export const navItems = [
   { name: "Início", href: "/" },
   { name: "Produtos", href: "/produtos" },
+  { name: "Cidades Atendidas", href: "/Cidades-Atendidas" },
   { name: "Como Comprar", href: "/como-comprar" },
   { name: "Sobre", href: "/quem-somos" },
   { name: "Blog", href: "/blog" },

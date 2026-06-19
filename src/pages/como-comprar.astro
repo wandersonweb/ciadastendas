@@ -16,6 +16,7 @@ import {
 } from 'lucide-astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getWhatsappUrl } from '../data/site';
+import { buildServiceSchema } from '../data/schema';
 
 const heroHighlights = [
   'Fabricação, fornecimento e venda de tendas',
@@ -258,7 +259,20 @@ const faqs = [
 ];
 ---
 
-<BaseLayout title="Venda de Tendas" description="Venda de tendas para eventos, feiras, empresas e uso profissional em BH e região, com orientação sobre modelos, medidas e manutenção.">
+<BaseLayout
+  title="Venda de Tendas"
+  description="Venda de tendas para eventos, feiras, empresas e uso profissional em BH e região, com orientação sobre modelos, medidas e manutenção."
+  structuredData={[
+    buildServiceSchema({
+      name: 'Venda de Tendas',
+      description:
+        'Venda de tendas para eventos, feiras, empresas e uso profissional em Belo Horizonte e regiao, com orientacao sobre modelos, medidas e manutencao.',
+      url: new URL('/como-comprar', Astro.site ?? 'https://ciadastendas.com.br').href,
+      serviceType: 'Venda de tendas',
+      areaServed: ['Belo Horizonte', 'Regiao Metropolitana de Belo Horizonte', 'Minas Gerais'],
+    }),
+  ]}
+>
   <main>
     <section class="relative overflow-hidden bg-primary pt-32 text-white">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.22),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]"></div>

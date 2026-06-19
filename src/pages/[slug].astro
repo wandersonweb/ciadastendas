@@ -2,17 +2,30 @@
 import SiloPage from '../components/SiloPage.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { buildCidadeTendaPage, cidadesTendas } from '../data/cidadesTendas';
+import { buildServiceSchema } from '../data/schema';
 
 export function getStaticPaths() {
   return cidadesTendas.map((item) => ({
     params: { slug: item.slug },
-    props: { page: buildCidadeTendaPage(item) },
+    props: { page: buildCidadeTendaPage(item), cidade: item },
   }));
 }
 
-const { page } = Astro.props;
+const { page, cidade } = Astro.props;
 ---
 
-<BaseLayout title={page.seoTitle} description={page.seoDescription}>
+<BaseLayout
+  title={page.seoTitle}
+  description={page.seoDescription}
+  structuredData={[
+    buildServiceSchema({
+      name: page.title,
+      description: page.seoDescription ?? page.description,
+      url: new URL(`/${page.slug}`, Astro.site ?? 'https://ciadastendas.com.br').href,
+      serviceType: `Aluguel de tendas em ${cidade.cidade}`,
+      areaServed: [cidade.cidade, cidade.regiao],
+    }),
+  ]}
+>
   <SiloPage {...page} />
 </BaseLayout>

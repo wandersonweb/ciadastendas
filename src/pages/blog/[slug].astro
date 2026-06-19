@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { blogPosts } from '../../data/blogPosts';
 import { ArrowRight, CheckCircle2 } from 'lucide-astro';
 import { getWhatsappUrl } from '../../data/site';
+import { buildArticleSchema } from '../../data/schema';
 
 export function getStaticPaths() {
   return blogPosts
@@ -14,7 +15,22 @@ const { post } = Astro.props;
 const date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }).format(new Date(`${post.pubDate}T12:00:00`));
 ---
 
-<BaseLayout title={post.title} description={post.description} image={post.image} type="article">
+<BaseLayout
+  title={post.title}
+  description={post.description}
+  image={post.image}
+  type="article"
+  structuredData={[
+    buildArticleSchema({
+      title: post.articleTitle ?? post.title,
+      description: post.description,
+      url: new URL(`/blog/${post.slug}`, Astro.site ?? 'https://ciadastendas.com.br').href,
+      image: post.image,
+      datePublished: post.pubDate,
+      articleSection: post.category,
+    }),
+  ]}
+>
   <main>
     <article>
       <header class="bg-primary pt-32 text-white">

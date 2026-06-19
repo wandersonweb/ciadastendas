@@ -3,6 +3,7 @@ import { ArrowRight, BadgeCheck, ChevronRight, MessageCircle } from 'lucide-astr
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { productLinks, products } from '../../data/products';
 import { getWhatsappUrl } from '../../data/site';
+import { buildProductSchema } from '../../data/schema';
 
 export function getStaticPaths() {
   return products.map((product) => ({
@@ -15,7 +16,21 @@ const { product } = Astro.props;
 const relatedProducts = productLinks.filter((item) => item.href !== `/produtos/${product.slug}`);
 ---
 
-<BaseLayout title={product.seoTitle} description={product.seoDescription} image={product.image}>
+<BaseLayout
+  title={product.seoTitle}
+  description={product.seoDescription}
+  image={product.image}
+  structuredData={[
+    buildProductSchema({
+      name: product.title,
+      description: product.description,
+      url: new URL(`/produtos/${product.slug}`, Astro.site ?? 'https://ciadastendas.com.br').href,
+      image: product.image,
+      category: 'Tendas e estruturas para eventos',
+      additionalProperty: product.specs,
+    }),
+  ]}
+>
   <main>
     <section class="relative overflow-hidden bg-primary pt-32 text-white">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.2),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_28%)]"></div>

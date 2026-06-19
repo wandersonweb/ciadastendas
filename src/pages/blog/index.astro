@@ -2,11 +2,28 @@
 import BlogCard from '../../components/BlogCard.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { blogPosts } from '../../data/blogPosts';
+import { site } from '../../data/site';
+import { buildCollectionPageSchema } from '../../data/schema';
 
 const informativePosts = blogPosts.filter((post) => !post.href);
 ---
 
-<BaseLayout title="Blog sobre Aluguel de Tendas" description="Conteúdos sobre aluguel de tendas, modelos, segurança, casamento, eventos corporativos e planejamento de estruturas temporárias.">
+<BaseLayout
+  title="Blog sobre Aluguel de Tendas"
+  description="Conteúdos sobre aluguel de tendas, modelos, segurança, casamento, eventos corporativos e planejamento de estruturas temporárias."
+  structuredData={[
+    buildCollectionPageSchema({
+      name: 'Blog sobre Aluguel de Tendas',
+      description:
+        'Coleção de artigos sobre aluguel de tendas, venda de tendas, planejamento, segurança e estruturas para eventos.',
+      url: new URL('/blog', Astro.site ?? 'https://ciadastendas.com.br').href,
+      items: informativePosts.map((post) => ({
+        name: post.title,
+        url: new URL(`/blog/${post.slug}`, site.siteUrl).href,
+      })),
+    }),
+  ]}
+>
   <main class="section-padding pt-36">
     <div class="max-w-3xl">
       <p class="section-eyebrow">Blog</p>
