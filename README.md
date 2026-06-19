@@ -30,6 +30,8 @@ Esse arquivo controla:
 - telefone e link do WhatsApp
 - e-mail
 - endereço
+- logo usada no layout e no schema
+- favicon principal do site
 - meta title e meta description globais
 - `siteUrl` usado em canonical, schema e sitemap
 - links do menu
@@ -117,6 +119,32 @@ A home está em [src/pages/index.astro](src/pages/index.astro) e monta a página
 - a origem usada e `https://ciadastendas.com.br`
 - as rotas novas como `/quem-somos`, `/eventos`, `/como-comprar` e `/produtos` entram no sitemap gerado
 - redirects legados e tratamento de `404` estao em `public/.htaccess`, `public/_redirects` e [src/pages/404.astro](src/pages/404.astro)
+
+## Dados estruturados e assets visuais
+
+Arquivos principais:
+
+- [src/data/schema.ts](src/data/schema.ts)
+- [src/layouts/BaseLayout.astro](src/layouts/BaseLayout.astro)
+- [src/data/site.ts](src/data/site.ts)
+
+Hoje o projeto usa:
+
+- `LocalBusiness` em todas as paginas
+- `WebPage` base em todas as paginas
+- `BreadcrumbList` automatico nas paginas internas
+- `Service` nas paginas comerciais e nas paginas de cidade
+- `CollectionPage` nas paginas indice como `Blog`, `Produtos` e `Cidades Atendidas`
+- `Article` nos posts do blog
+- `Product` nas paginas internas de produto
+- `AboutPage` em `/quem-somos`
+- `ContactPage` em `/contato`
+
+Assets atuais:
+
+- logo principal: `public/images/Logo-tenda.png`
+- favicon principal: `public/favicon.png`
+- imagem OG/schema principal: `public/images/banner-aluguel-venda-tenda.webp`
 
 ## Documentação completa
 

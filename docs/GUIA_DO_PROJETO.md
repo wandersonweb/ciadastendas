@@ -20,10 +20,11 @@ Hoje, a maior parte do site é controlada por arquivos de dados em `src/data`, e
 Arquitetura principal:
 
 1. `BaseLayout` injeta SEO, navbar, footer e botão flutuante de WhatsApp.
-2. As páginas comerciais usam o componente `SiloPage`.
-3. O blog atual usa `src/data/blogPosts.ts`.
-4. As páginas por cidade são geradas dinamicamente a partir de `src/data/cidadesTendas.ts`.
-5. As páginas de venda e produto usam `src/pages/como-comprar.astro`, `src/pages/produtos/index.astro` e `src/pages/produtos/[slug].astro`.
+2. `schema.ts` centraliza os dados estruturados reutilizáveis do site.
+3. As páginas comerciais usam o componente `SiloPage`.
+4. O blog atual usa `src/data/blogPosts.ts`.
+5. As páginas por cidade são geradas dinamicamente a partir de `src/data/cidadesTendas.ts`.
+6. As páginas de venda e produto usam `src/pages/como-comprar.astro`, `src/pages/produtos/index.astro` e `src/pages/produtos/[slug].astro`.
 
 ## Estrutura principal
 
@@ -36,12 +37,17 @@ Responsável por:
 - importar `global.css`
 - definir SEO com `astro-seo`
 - gerar canonical
-- injetar `LocalBusiness` em JSON-LD
+- injetar JSON-LD base e schemas complementares
 - renderizar `Navbar`
 - renderizar `Footer`
 - renderizar `FloatingWhatsApp`
 
 Se o problema envolver SEO global, schema, canonical, botão flutuante, menu ou rodapé, comece por aqui.
+
+Observação importante:
+
+- o `BaseLayout` hoje recebe `structuredData`, `pageSchemaType` e `breadcrumbs`
+- a maior parte dos schemas específicos parte de [src/data/schema.ts](../src/data/schema.ts)
 
 ### Página inicial
 
@@ -76,6 +82,8 @@ Controla:
 - `site.whatsapp`
 - `site.email`
 - `site.address`
+- `site.logo`
+- `site.favicon`
 - `site.metaTitle`
 - `site.metaDescription`
 - `site.siteUrl`
@@ -89,6 +97,35 @@ Sempre que mudar telefone, e-mail, endereço, nome da empresa, CTA global, menu 
 Observação:
 
 - `site.siteUrl` também é a base do canonical, do schema e do sitemap gerado no build
+- a logo visual atual está em `public/images/Logo-tenda.png`
+- o favicon principal atual está em `public/favicon.png`
+- a imagem OG/schema principal atual está em `public/images/banner-aluguel-venda-tenda.webp`
+
+### 1.1. Helper de dados estruturados
+
+Arquivo: [src/data/schema.ts](../src/data/schema.ts)
+
+Esse arquivo centraliza a geração de:
+
+- `LocalBusiness`
+- `WebSite`
+- `WebPage`
+- `Service`
+- `CollectionPage`
+- `Article`
+- `Product`
+- `BreadcrumbList`
+
+Uso atual por tipo de página:
+
+- todas as páginas: `LocalBusiness`
+- home: `WebSite` + `WebPage` + `Service`
+- páginas comerciais: `WebPage` + `Service`
+- páginas de cidade: `WebPage` + `Service` com `areaServed` específico
+- índice de cidades: `CollectionPage`
+- blog post: `Article`
+- produto interno: `Product`
+- institucionais: `AboutPage` e `ContactPage`
 
 ### 2. Páginas comerciais fixas
 
@@ -259,6 +296,7 @@ Hoje usa diretamente `site.ts` para:
 - e-mail
 - endereço
 - nome da empresa
+- logo principal do site
 
 ### Botão flutuante de WhatsApp
 
@@ -329,6 +367,12 @@ Depois conferir:
 - links de WhatsApp
 - sitemap na próxima build
 
+Se a mudança também envolver logo, favicon ou imagem principal do schema:
+
+- revisar `site.logo`
+- revisar `site.favicon`
+- revisar `site.ogImage`
+
 ### Alterar H1, SEO ou texto de uma página comercial
 
 Editar:
@@ -373,6 +417,10 @@ Editar:
 
 O catálogo e as páginas internas são derivados desse arquivo.
 
+Observação:
+
+- as imagens dos cards e das páginas internas de produto hoje vêm de `products.ts`
+
 ### Criar um novo post do blog
 
 Editar:
@@ -394,6 +442,11 @@ Editar:
 - [src/data/cidadesTendas.ts](../src/data/cidadesTendas.ts)
 
 Não precisa criar manualmente uma página em `src/pages`, porque a rota dinâmica já cuida disso.
+
+Observação:
+
+- as miniaturas das páginas de cidade usam o bloco `defaultArticleImages` em `cidadesTendas.ts`
+- o schema da página local também é montado automaticamente pela rota dinâmica
 
 ## Convenções úteis para futuras IAs
 
@@ -439,6 +492,7 @@ npm run build
 Se alguém precisar entender este projeto em poucos minutos:
 
 - `site.ts` controla os dados da empresa
+- `schema.ts` controla a base dos dados estruturados
 - `siloPages.ts` controla as páginas comerciais principais
 - `products.ts` controla o catálogo e as páginas de produtos
 - `como-comprar.astro` controla a landing page de venda
